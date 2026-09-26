@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+    background: transparent;
+    font-family: Georgia, serif;
+    font-size: 18pt;
+    margin: 12px 16px;
+    color: black;
+    line-height: 1.4;
+}
+h1 {
+    font-size: 22pt;
+    font-weight: bold;
+    margin-top: 24pt;
+    margin-bottom: 8pt;
+}
+h2 {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 18pt;
+    margin-bottom: 6pt;
+    margin-left: 16pt;
+}
+p {
+    margin: 6pt 0;
+}
+.indent {
+    margin-left: 16pt;
+}
+ul {
+    margin: 4pt 0;
+    padding-left: 20pt;
+}
+li {
+    margin: 4pt 0;
+}
+nav h2 {
+    font-size: 22pt;
+    margin-left: 0;
+    margin-top: 0;
+}
+nav ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+nav > ul > li {
+    font-weight: bold;
+    margin: 6pt 0;
+}
+nav > ul > li > ul {
+    margin-top: 2pt;
+}
+nav > ul > li > ul > li {
+    font-weight: normal;
+    margin-left: 16pt;
+    margin-top: 3pt;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<h2>Contents</h2>
+<ul>
+    <li><a href="#_Toc114482113">1.0&nbsp;&nbsp;&nbsp; Overview</a></li>
+    <li><a href="#_Toc114482114">2.0&nbsp;&nbsp;&nbsp; The Money Tab</a>
+        <ul>
+            <li><a href="#_Toc114482115">2.1&nbsp;&nbsp;&nbsp; Changing the Background Color</a></li>
+            <li><a href="#_Toc114482116">2.2&nbsp;&nbsp;&nbsp; Entering Income</a></li>
+            <li><a href="#_Toc114482117">2.3&nbsp;&nbsp;&nbsp; Entering Investments</a></li>
+            <li><a href="#_Toc114482118">2.4&nbsp;&nbsp;&nbsp; Entering Expenses</a></li>
+            <li><a href="#_Toc114482119">2.5&nbsp;&nbsp;&nbsp; Entering Transfers</a></li>
+            <li><a href="#_Toc114482120">2.6&nbsp;&nbsp;&nbsp; Resolving Transfer Scheduling Conflicts</a></li>
+            <li><a href="#sec-2-7">2.7&nbsp;&nbsp;&nbsp; Transfer and Data-Entry Advisories</a></li>
+        </ul>
+    </li>
+    <li><a href="#_Toc114482121">3.0&nbsp;&nbsp;&nbsp; The Estimator Tab</a>
+        <ul>
+            <li><a href="#_Toc114482122">3.1&nbsp;&nbsp;&nbsp; Entering an Estimator Configuration</a></li>
+            <li><a href="#_Toc114482123">3.2&nbsp;&nbsp;&nbsp; Setting Line Graph and CSV Report Output Options</a></li>
+            <li><a href="#_Toc114482124">3.3&nbsp;&nbsp;&nbsp; Viewing the Line Graph</a></li>
+            <li><a href="#sec-3-4">3.4&nbsp;&nbsp;&nbsp; Comparing Two Estimator Configurations</a></li>
+            <li><a href="#_Toc114482131">3.5&nbsp;&nbsp;&nbsp; Monte Carlo Simulation</a></li>
+            <li><a href="#_Toc114482125">3.6&nbsp;&nbsp;&nbsp; Generating/Viewing CSV Reports</a></li>
+            <li><a href="#_Toc114482133">3.7&nbsp;&nbsp;&nbsp; How Currency Flows on the Same Date</a></li>
+        </ul>
+    </li>
+    <li><a href="#_Toc114482126">4.0&nbsp;&nbsp;&nbsp; The Settings Tab</a>
+        <ul>
+            <li><a href="#_Toc114482127">4.1&nbsp;&nbsp;&nbsp; In-App Purchases</a></li>
+            <li><a href="#_Toc114482128">4.2&nbsp;&nbsp;&nbsp; Enabling App Authentication</a></li>
+            <li><a href="#_Toc114482129">4.3&nbsp;&nbsp;&nbsp; Importing/Exporting Data</a></li>
+            <li><a href="#_Toc114482132">4.4&nbsp;&nbsp;&nbsp; Monte Carlo Settings</a></li>
+            <li><a href="#_Toc114482130">4.5&nbsp;&nbsp;&nbsp; Delete All Data</a></li>
+            <li><a href="#_TocShortcuts">4.6&nbsp;&nbsp;&nbsp; Shortcuts Actions</a></li>
+        </ul>
+    </li>
+</ul>
+</nav>
+
+<h1 id="_Toc114482113">1.0&nbsp;&nbsp;&nbsp; Overview</h1>
+
+<p>Retirement Estimator allows you to estimate, chart, and report future financial scenarios. Financial information is entered in three basic categories as income, investments, and expenses. Transfers can then be created between income, investments, and expenses. Each entry can have a growth rate, periodic schedule, taxes, and begin and end date. Monte Carlo simulation can then be used to model a range of possible financial outcomes and calculate the probability of a financially successful retirement. Two estimator configurations can be drawn together on one line graph to compare one plan against another, including an earlier version of your plan brought in from an exported data file.</p>
+
+<p>Your data is your own! The data you enter in Retirement Estimator is stored and read by Retirement Estimator to and from your device only. Read the Privacy statement for further information.</p>
+
+<h1 id="_Toc114482114">2.0&nbsp;&nbsp;&nbsp; The Money Tab</h1>
+
+<p>The &#8220;Money Tab&#8221; is used to enter financial information in the categories of Income, Investments, Expenses, and Transfers.</p>
+
+<h2 id="_Toc114482115">2.1&nbsp;&nbsp;&nbsp; Changing the Background Color</h2>
+
+<p>The background color can be changed in the &#8220;Money&#8221; page. Swipe right or left to change the background color. To create a custom background color press and hold the background until a color wheel appears. Move the brightness slider and color wheel to change colors. Press Back and the change should take effect. The most recent five custom colors are saved and can be selected by swiping left or right.</p>
+
+<h2 id="_Toc114482116">2.2&nbsp;&nbsp;&nbsp; Entering Income</h2>
+
+<p class="indent">Income is a payment received on a periodic schedule from any source.</p>
+
+<p class="indent">Income Fields</p>
+
+<ul>
+    <li>Income Name - Enter any name to identify the income.</li>
+    <li>Income Payment
+        <ul>
+            <li>Payment - Enter the amount of the payment.</li>
+            <li>Payment Schedule - Enter a number and choose Days, Weeks, Months, Quarters, or Years. Income payments will be calculated according to this schedule.</li>
+            <li>Convert Payment to Payment Schedule &#8212; Enabling will convert Payment to changes made in Payment Schedule. The Gregorian calendar is used for conversion to account for leap year.</li>
+        </ul>
+    </li>
+    <li>Income Percentage Increase
+        <ul>
+            <li>Percentage Payment Increase - Enter a percentage value to increase or decrease the income payment amount according to the Percentage Payment Increase Schedule.</li>
+            <li>Percentage Payment Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The income payment will be increased or decreased by this percentage amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Income Fixed Increase
+        <ul>
+            <li>Fixed Payment Increase - Enter a fixed amount to increase or decrease the income payment according to the Fixed Payment Increase Schedule. A fixed increase is calculated independent of a percentage increase.</li>
+            <li>Fixed Payment Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The income payment will be increased or decreased by this fixed amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Tax on Income Payment
+        <ul>
+            <li>Income Payment Tax - Enter a percentage amount to deduct from each payment.</li>
+        </ul>
+    </li>
+    <li>Income Begin and End Date
+        <ul>
+            <li>Begin Date - Enter a date the income will start. If the Begin Date is empty then the Begin Date for the Estimator Configuration will be used.</li>
+            <li>End Date - Enter a date the income will stop. If the End Date is empty then the End Date for the Estimator Configuration will be used.</li>
+        </ul>
+    </li>
+    <li>Save - Press Save to save your changes.</li>
+    <li>Delete - Press Delete to remove the Income. You can also delete from the Income list by swiping left on the Income item and choosing delete.</li>
+</ul>
+
+<h2 id="_Toc114482117">2.3&nbsp;&nbsp;&nbsp; Entering Investments</h2>
+
+<p class="indent">An investment is money that has positive or negative growth over time.</p>
+
+<p class="indent">Investment Fields</p>
+
+<ul>
+    <li>Investment Name - Enter any name to identify the investment.</li>
+    <li>Initial Investment
+        <ul>
+            <li>Starting Investment Amount - Enter the starting amount for the investment.</li>
+        </ul>
+    </li>
+    <li>Investment Percentage Increase
+        <ul>
+            <li>Percentage Investment Increase - Enter a percentage value to increase or decrease the investment amount according to the Percentage Investment Increase Schedule.</li>
+            <li>Percentage Investment Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The investment will be increased or decreased by this percentage amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Investment Fixed Increase
+        <ul>
+            <li>Fixed Investment Increase - Enter a fixed amount to increase or decrease the investment amount according to the Fixed Investment Increase Schedule. A fixed increase is calculated independent of a percentage increase.</li>
+            <li>Fixed Investment Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The investment amount will be increased or decreased by this fixed amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Tax on Investment Increase
+        <ul>
+            <li>Investment Increase Tax - Enter a percentage amount to deduct from percentage and fixed investment increases.</li>
+        </ul>
+    </li>
+    <li>Investment Begin and End Date
+        <ul>
+            <li>Begin Date - Enter a date the investment will start. If the Begin Date is empty then the Begin Date for the Estimator Configuration will be used.</li>
+            <li>End Date - Enter a date the investment will stop. If the End Date is empty then the End Date for the Estimator Configuration will be used.</li>
+        </ul>
+    </li>
+    <li>Save - Press Save to save your changes.</li>
+    <li>Delete - Press Delete to remove the Investment. You can also delete from the Investment list by swiping left on the Investment item and choosing delete.</li>
+</ul>
+
+<h2 id="_Toc114482118">2.4&nbsp;&nbsp;&nbsp; Entering Expenses</h2>
+
+<p class="indent">An expense is money that is owed. Expenses can have a cost amount, a periodic cost schedule, a periodic percentage increase, a periodic fixed increase, and a begin and end date.</p>
+
+<p class="indent">Expense Fields</p>
+
+<ul>
+    <li>Expense Name - Enter any name to identify the expense.</li>
+    <li>Expense Cost
+        <ul>
+            <li>Cost - Enter the amount of the cost.</li>
+            <li>Cost Schedule - Enter a number and press Days, Weeks, Months, Quarters, or Years. Expense costs will be calculated according to this schedule.</li>
+            <li>Convert Cost to Cost Schedule &#8212; Enabling will convert Cost to changes made in Cost Schedule. The Gregorian calendar is used for conversion to account for leap year.</li>
+        </ul>
+    </li>
+    <li>Expense Percentage Increase
+        <ul>
+            <li>Percentage Cost Increase - Enter a percentage value to increase or decrease the expense cost according to the Percentage Cost Increase Schedule.</li>
+            <li>Percentage Cost Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The expense cost will be increased or decreased by this percentage amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Expense Fixed Increase
+        <ul>
+            <li>Fixed Cost Increase - Enter a fixed amount to increase or decrease the expense cost according to the Fixed Cost Increase Schedule. A fixed increase is calculated independent of a percentage increase.</li>
+            <li>Fixed Cost Increase Schedule - Enter a number and press Days, Weeks, Months, Quarters or Years. The expense cost will be increased or decreased by this fixed amount according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Expense Begin and End Date
+        <ul>
+            <li>Begin Date - Enter a date the expense will start. If the Begin Date is empty then the Begin Date for the Estimator Configuration will be used. Tip: When setting a begin date for expenses it is easier to prioritize and track the future growth/decline if all expenses start on the 1st day of a week, month, quarter, or year.</li>
+            <li>End Date - Enter a date the expense will stop. If the End Date is empty then the End Date for the Estimator Configuration will be used.</li>
+        </ul>
+    </li>
+    <li>Save - Press Save to save your changes.</li>
+    <li>Delete - Press Delete to remove the Expense. You can also delete from the Expense list by swiping left on the Expense item and choosing delete.</li>
+</ul>
+
+<p class="indent">Note: Money transferred to an expense can be used to transfer from the expense to an investment. A scenario where this can be helpful is when taking a fixed income from a 401K, IRA, etc. The expense can be increased by a percentage amount to simulate inflation. The expense can then be transferred to an investment like a savings account. This allows the simulation of income from a 401K, IRA, etc. that increases with an inflation rate.</p>
+
+<h2 id="_Toc114482119">2.5&nbsp;&nbsp;&nbsp; Entering Transfers</h2>
+
+<p class="indent">A transfer is money that is distributed from income and investments to investments and expenses. When transferring to an expense, the amount transferred to an expense can also be transferred to an investment. Transfers are listed by priority, the top of the list is highest priority.</p>
+
+<p class="indent">Transfer Fields</p>
+
+<ul>
+    <li>Transfer Name - Enter any name to identify the transfer.</li>
+    <li>Transfer From/To
+        <ul>
+            <li>From - Pressing From will show the From selection page. Any Income, Investment, or Expense can be selected for From.</li>
+            <li>To - Pressing To will show the To selection page. Any Investment can be selected for To. Any Expense can be selected if transferring from Income or Investment.</li>
+        </ul>
+    </li>
+    <li>Transfer Priority
+        <ul>
+            <li>Set Transfer Priority - Pressing Set Transfer Priority will show the Transfer Priority page. Move transfers by pressing the right transfer reorder icon and dragging the transfer up or down. Transfers at the top of the list will be calculated before transfers at the bottom of the list.</li>
+        </ul>
+    </li>
+    <li>Transfer Type - The Transfer Type can be either Percentage or Fixed but cannot be both.
+        <ul>
+            <li>Percent - Transfer up to a percentage from the Income, Investment, or Expense to the Investment or Expense.</li>
+            <li>Fixed - Transfer a fixed amount from the Income, Investment, or Expense to the Investment or Expense.</li>
+        </ul>
+    </li>
+    <li>Percentage Transfer
+        <ul>
+            <li>Percent Of Expense Cost - If transferring to an Investment, then this percentage of the From Income or Investment will be transferred. If transferring to an Expense, then this percentage of the From Income or Investment will be transferred but the transfer amount will not exceed the total accumulated expense. A CSV report will show the actual percentage transferred from the Income, Investment, or Expense.</li>
+            <li>Percentage Transfer Schedule - If transferring to an Expense, then the schedule is the same as the Expense and is not editable. Enter a number and press Days, Weeks, Months, Quarters or Years. The percentage transfers will be made according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Fixed Transfer
+        <ul>
+            <li>Fixed Amount From Income/Investment/Expense - If transferring to an Investment, then this fixed amount from the Income, Investment, or Expense will be transferred. If transferring to an Expense, then this fixed amount from the Income or Investment will be transferred but the transfer amount will not exceed the total accumulated expense. A CSV report will show the actual fixed transfer from the Income or Investment.</li>
+            <li>Fixed Transfer Schedule - If transferring to an Expense, then the schedule is the same as the Expense and is not editable. Enter a number and press Days, Weeks, Months, Quarters or Years. The fixed transfers will be made according to this schedule.</li>
+        </ul>
+    </li>
+    <li>Tax on Transfer
+        <ul>
+            <li>Transfer Tax - Enter a percentage of the transfer that will be subtracted from the source of the transfer but not added to the target of the transfer. A CSV report will show the amount of tax taken from the Income, Investment, or Expense. An example of when to apply this tax is when transferring from 401K or IRA Investment pre-taxed dollars to another investment or expense.</li>
+            <li>Add To - Selecting Add To will add the tax to the transfer amount. An example of adding the tax to the transfer amount would be transferring to an expense with a sales tax.</li>
+            <li>Subtract From - Selecting Subtract From will subtract the tax from the transfer amount. An example of subtracting the tax from the transfer amount would be the tax on the percentage of taxable income.</li>
+        </ul>
+    </li>
+    <li>Transfer Begin and End Date
+        <ul>
+            <li>Begin Date - Enter a date the transfer will start. If the Begin Date is empty then the Begin Date for the Estimator Configuration will be used.</li>
+            <li>End Date - Enter a date the transfer will stop. If the End Date is empty then the End Date for the Estimator Configuration will be used.</li>
+        </ul>
+    </li>
+    <li>Save - Press Save to save your changes.</li>
+    <li>Delete - Press Delete to remove the Transfer. You can also delete from the Transfer list by swiping left on the Transfer item and choosing delete.</li>
+</ul>
+
+<h2 id="_Toc114482120">2.6&nbsp;&nbsp;&nbsp; Resolving Transfer Scheduling Conflicts</h2>
+
+<p>In order for priority transfers to work, two or more transfers from the same source with overlapping transfer dates must have the same schedule, schedule Type, and overlapping dates. It is recommended that transfers and expenses all have the same schedule type of daily, weekly, monthly, quarterly, or yearly. Also, begin all transfers and expenses on the same day of the week for weekly, the same day of the month for monthly, the same day of the quarter for quarterly, or the same day of the year for yearly.</p>
+
+<p>Enabling the Income or Expense option to Convert To Schedule can be used to easily convert a payment or expense amount to any other periodic schedule. To do so enable the Convert To Schedule option and then change the value for Every and/or change Day(s), Week(s), Month(s), Quarter(s), Year(s).</p>
+
+<p>For example, if the income Paycheck transfers to a monthly Mortgage expense and also transfers to a yearly Property Tax expense then the Mortgage expense will have to be converted to a yearly expense or the Property Tax expense will have to be converted to a monthly expense. Furthermore, if the expenses are converted to monthly expenses and the Mortgage expense begins on the first day of a month then the Property Tax expense will also need to begin on the first day of a month. The months do not have to be the same. If converted to yearly and the Property Tax begins on Dec 15<sup>th</sup> then the Mortgage will also need to begin on Dec 15<sup>th</sup>. The years do not have to be the same.</p>
+
+<p>The simplest method of trying to resolve transfer conflicts may be to first convert transfer expenses to the same schedule.</p>
+
+<p>The Estimator Configuration Begin Date can fall on a different day of the week, month, quarter, or year than the transfers using a matching schedule. When that happens the first scheduled transfer moves forward to the next date that fits its schedule. This is reported as a Configuration Date Advisory — it does not block report generation, and is resolved on the Estimator Configuration screen rather than on individual transfers.</p>
+
+<p>The app helps you avoid, find, and fix conflicts in several places:</p>
+
+<ul class="indent">
+    <li><strong>When entering a new transfer.</strong> If other transfers already exist on the same source, the schedule fields are pre-filled to match those siblings, and a small advisory above the form names the source and the schedule it expects. Tap the advisory to see the full list of sibling transfers and their schedules.</li>
+    <li><strong>While editing a transfer.</strong> If the schedule or begin date you have typed conflicts with sibling transfers, an advisory-time fix sheet offers one-tap mechanical fixes before you tap Save — for example <em>Set 'Paycheck → 401k' to Yearly</em>, or <em>Snap begin date to 12/15/2026</em>. Fix candidates are ranked by how cleanly each resolves the conflict; the cleanest fix appears at the top of the list, and when only one fix produces zero remaining conflicts it is tagged <em>(Recommended)</em>. The sheet also offers <em>Open From</em>, <em>Open To</em>, and <em>View siblings</em> if you want to investigate before applying a fix. Tapping a fix shows a confirmation summary of exactly what will change before it commits.</li>
+    <li><strong>When saving a transfer.</strong> If saving would create one or more scheduling conflicts, the same mechanical-fix sheet appears. Each fix label tells you what will change — schedule, begin date, and any auto-recomputed amount or percent (see below). <em>Save anyway</em> remains available if you want to commit the conflict as-is and address it later.</li>
+    <li><strong>When saving an expense.</strong> Editing an expense's schedule, schedule type, or begin date can quietly affect every transfer paying into it (their effective schedule is the destination expense's schedule). The save detects this and offers the same mechanical-fix sheet, including a <em>Revert</em> option that puts the expense's schedule and cost back to the previous values, or a separate <em>Revert begin date</em> fix when only the begin date introduced the conflict.</li>
+    <li><strong>When saving an Estimator Configuration.</strong> If the begin date you typed misaligns with one or more transfers, the app offers to update the begin date to a single date that resolves them all — for example <em>Update to 12/15/2026</em> / <em>Save as typed</em>. If no single date resolves all of them (transfers with different schedules can't share one alignment date), a heads-up alert lists the count and reminds you that the misalignment will appear in the conflicts list when you next Generate, Chart, or run Monte Carlo.</li>
+    <li><strong>When you change an expense's schedule.</strong> Every fixed-amount transfer paying into that expense is automatically re-expressed on the new schedule so the daily cash flow is preserved. A $500/month transfer becomes $6,000/year (and vice versa) without any prompt. When a transfer fix changes its own schedule, the transfer's amount or percent is similarly recomputed to preserve equivalence — fixed amounts always, and percent only when the source is an Investment (percent on an Income or Expense source is schedule-invariant by definition).</li>
+    <li><strong>When a transfer's schedule does not match its source.</strong> A percentage transfer pays an even amount only when its schedule lines up with the schedule of the income or expense it draws from. When they differ, the Income or Expense form shows an advisory at the top of the form, and the same item is listed under <em>Uneven Payments</em> in the conflicts list. The one-tap fix changes the source's own schedule and re-expresses its amount to keep the same total, so the transfer pays evenly. Auto-Fix All resolves these together with scheduling conflicts.</li>
+    <li><strong>When tapping View Graph, Generate CSV Report, or Monte Carlo Simulation.</strong> A list of every current scheduling conflict, Uneven Payments item, and Configuration Date Advisory is displayed. Tap a row to jump directly to the right surface to fix that side — a transfer's edit screen, a source income or expense's edit screen, a destination expense's edit screen, or the Estimator Configuration. If only Configuration Date Advisories are present (no blocking conflicts), generation proceeds silently without showing the list.</li>
+    <li><strong>Auto-Fix All.</strong> On the conflicts list above, an <em>Auto-Fix All</em> button at the top attempts to resolve every conflict in the list at once. A warning first summarizes the kinds of changes that can happen — transfer schedule edits, transfer amount / percent recomputation, expense schedule propagation, matching a source's schedule to the transfers that draw from it, and Estimator Configuration begin-date alignment. After the run a summary screen lists every change made and any conflicts that could not be auto-fixed. Two buttons let you <em>Undo</em> everything in one tap, or <em>Keep &amp; Continue</em> to commit the changes and re-run the report.</li>
+    <li><strong>Continue Anyway.</strong> The conflicts list also has a <em>Continue Anyway</em> button. It generates the report from the data exactly as entered, without changing anything. The items in the list explain what will happen: when two transfers from the same source have different schedules, the source pays whichever transfer has the earlier date first, so the priority order you set is not applied to those transfers.</li>
+</ul>
+
+<p>To generate a report that follows your transfer priorities, resolve the listed conflicts — individually or with Auto-Fix All. To generate a report from the data exactly as entered, use Continue Anyway; the priority order will not be applied to any same-source transfers that have different schedules, and the report still generates. Configuration Date Advisories never block report generation.</p>
+
+<h2 id="sec-2-7">2.7&nbsp;&nbsp;&nbsp; Transfer and Data-Entry Advisories</h2>
+
+<p>As you enter data, the app shows optional notes that explain how your entries will behave. None of them block saving or report generation. Each note either explains the effect of an entry or offers a one-tap adjustment that you confirm with Save.</p>
+
+<ul class="indent">
+    <li><strong>Percentage transfers that add up past 100%.</strong> When more than one percentage transfer draws from the same source, the app adds their percentages together. A source can pay at most 100% of itself, so above 100% the lower-priority transfer receives less than its stated percentage. A note on the Transfer form shows the running total — a soft note as it approaches the limit, and a stronger note once it is exceeded — so you can adjust the percentages or the priority order.</li>
+
+    <li><strong>A fixed-amount transfer alongside a growing source.</strong> A fixed-amount transfer moves the same dollar amount each time it is scheduled, while an income, investment, or expense set to grow increases over time. Over a long projection the fixed amount becomes a smaller share of the source. When the app detects this, a note on the Transfer form offers to switch the transfer to a percentage set to its current share, so it grows along with the source. The change is made in the form; press Save to keep it.</li>
+
+    <li><strong>A report schedule less frequent than its transfers.</strong> If an Estimator Configuration's schedule is less frequent than the transfers it includes — for example, a Yearly report that includes a Monthly transfer — detail is combined into each reported period. Before the report runs, the app offers to switch the report to the more frequent schedule and run, or to continue with the current schedule. A switch is staged in the Estimator Configuration form; press Save to keep it.</li>
+
+    <li><strong>What a percentage means.</strong> A note under the Percent field on the Transfer form describes how the percentage is applied for the chosen source. For an income source it is a percentage of total income earned to date, minus prior transfers. For an expense source it is a percentage of total expense accumulated to date, minus prior transfers. For an investment source it is a percentage of the current balance, recalculated each time — and changing the schedule changes the long-term draw rate.</li>
+
+    <li><strong>How a typed rate adds up over a year.</strong> The Interest rate on an Investment, and the growth rate on an Income or Expense, apply each time the item's schedule comes due — for example, each month on a monthly schedule — not once per year. A note under the field restates the result as an effective yearly rate (for example, &ldquo;1% per month, compounds to about 12.7% per year&rdquo;), so a rate entered on one schedule is not read as a yearly rate.</li>
+</ul>
+
+<h1 id="_Toc114482121">3.0&nbsp;&nbsp;&nbsp; The Estimator Tab</h1>
+
+<h2 id="_Toc114482122">3.1&nbsp;&nbsp;&nbsp; Entering an Estimator Configuration</h2>
+
+<p class="indent">Any combination of Income, Investments, Expenses, and Transfers can be included in a line graph, a CSV report, or a Monte Carlo simulation. This combination is stored as an Estimator Configuration. Multiple Estimator Configurations can be created to narrow information presented in the line graph, CSV reports, and Monte Carlo simulations.</p>
+
+<p class="indent">Estimator Configuration Fields</p>
+
+<ul>
+    <li>Name - Enter any name to identify the estimator configuration.</li>
+    <li>Begin Date - Enter a date for the start date of the line graph, CSV report, or Monte Carlo simulation. Any Income, Investment, Expense, or Transfer without a begin date will start with this date.</li>
+    <li>End Date - Enter a date for the end date of the line graph, CSV report, or Monte Carlo simulation. Any Income, Investment, Expense, or Transfer without an end date will end with this date.</li>
+    <li>Report By - Choose more or less frequent data in the line graph or CSV report.</li>
+    <li>Save - Press Save to save your changes.</li>
+    <li>Delete - Press Delete to remove the Estimator Configuration. You can also delete from the Estimator Configuration list by swiping left on the Estimator Configuration item and choosing delete.</li>
+</ul>
+
+<h2 id="_Toc114482123">3.2&nbsp;&nbsp;&nbsp; Setting Line Graph and CSV Report Output Options</h2>
+
+<p class="indent">On the Estimator Configuration page, press &#8220;CSV Report/Graphing Options&#8221; to show CSV report and line graph options. These settings also control which items are included in the Monte Carlo simulation.</p>
+
+<ul>
+    <li>CSV Report/Graphing Options - Show the Report/Graphing Options page.
+        <ul>
+            <li>Align CSV Report Columns By Date &#8212; If enabled then column data in the CSV report will be aligned by date. Aligning CSV report columns by date can make it easier to identify data entry problems.</li>
+            <li>Color - Each Income, Investment, and Expense can have a user defined color. Press and hold the color until the color wheel appears. Move the brightness slider and color wheel to change colors.</li>
+            <li>Fill - Each Income, Investment, and Expense can have the line color filled below the line in the graph.</li>
+            <li>Output - Each Income, Investment, Expense, and Transfer can be enabled or disabled for output. If disabled then the item will not appear in the line graph or CSV report.</li>
+            <li>Enabled - Each Income, Investment, Expense, and Transfer can be enabled or disabled. If disabled then the item will not be included in calculations and will not be output in the line graph, CSV report, or Monte Carlo simulation. Use the Enabled toggle to quickly experiment with how adding or removing an income source, investment, or expense affects the Monte Carlo Probability of Success &#8212; disable an item, run the simulation, then re-enable it and run again to compare results.</li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="_Toc114482124">3.3&nbsp;&nbsp;&nbsp; Viewing the Line Graph</h2>
+
+<p class="indent">On the Estimator Configuration page, press &#8220;View Graph&#8221; to show a line graph.</p>
+
+<ul>
+    <li>View Graph - Show the line graph.
+        <ul>
+            <li>The line graph will show each enabled and output Income, Investment, and Expense. The vertical y axis is by money and the horizontal x axis is by time.
+                <ul>
+                    <li>Press a point on the graph to open a bubble with information about that point such as name, date, amount, etc.</li>
+                    <li>The denominations on the vertical y axis are K for thousands, M for millions, B for billions, T for trillions, and Q for Quadrillions.</li>
+                    <li>Zoom in and out of the graph by pinching in or out.</li>
+                    <li>If calculations are taking too long for points on the line graph to appear then press &#8220;Back&#8221; to cancel calculations and return to the Estimator Configuration.</li>
+                    <li>To show this estimator configuration together with another one on the same graph, press &#8220;Compare Graphs&#8221; instead (Section 3.4).</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="sec-3-4">3.4&nbsp;&nbsp;&nbsp; Comparing Two Estimator Configurations</h2>
+
+<p class="indent">On the Estimator Configuration page, press &#8220;Compare Graphs&#8221; to draw this estimator configuration and one other on the same line graph. Use this to see two plans side by side &#8212; retiring at 62 against retiring at 67, a plan with a paid-off mortgage against one without, or your current plan against an earlier version of it that you imported. Any two estimator configurations can be compared.</p>
+
+<ul>
+    <li>Compare Graphs - Choose the estimator configuration to compare against, then press &#8220;Graph&#8221;.
+        <ul>
+            <li>The estimator configuration you started from is drawn with solid lines. The estimator configuration you choose is drawn with dashed lines. The graph title names both and marks which one is dashed.</li>
+            <li>Each estimator configuration is calculated using its own begin date, end date, and schedule. Every line shows exactly the same values that estimator configuration shows on its own line graph.</li>
+            <li>Each estimator configuration uses its own Line Graph output options (Section 3.2). An Income, Investment, or Expense appears for an estimator configuration only when it is enabled and set for output in that estimator configuration, and each line is drawn in the color that estimator configuration gives it. The same item can be a different color on each side when you have set different colors.</li>
+            <li>Press a point on the graph to open a bubble. The bubble shows the same information as the single-configuration graph, plus the name of the estimator configuration that point belongs to.</li>
+            <li>Two estimator configurations are needed to compare. Add a second estimator configuration on the Estimator tab to use this feature.</li>
+        </ul>
+    </li>
+</ul>
+
+<p class="indent">The horizontal time axis runs from the earlier of the two begin dates to the later of the two end dates, so both estimator configurations are shown in full. An estimator configuration that begins later starts partway across the graph, at its own begin date, rather than at the left edge. When the two estimator configurations use different schedules, the finer of the two sets the spacing of the time axis; each estimator configuration keeps its own schedule for its calculations.</p>
+
+<h2 id="_Toc114482131">3.5&nbsp;&nbsp;&nbsp; Monte Carlo Simulation</h2>
+
+<p class="indent">On the Estimator Configuration page, press &#8220;Monte Carlo Simulation&#8221; to run a simulation based on the parameters configured in Monte Carlo Settings. The simulation runs the financial calculation engine the number of times set in Monte Carlo Settings. Within each simulation run, investment return rates and expense inflation rates are varied at each calculation period by sampling randomly from a distribution centered on the rate entered for each item &#8212; the spread of that variation is controlled by the standard deviation parameters set in Monte Carlo Settings. Income growth rates are varied once per simulation run. Fixed dollar amounts, tax rates, transfer amounts, schedules, and dates are not varied &#8212; only the growth and inflation rates entered for each item are subject to variability. The result is a range of possible portfolio outcomes shown as percentile bands on a chart, along with a Probability of Success percentage.</p>
+
+<p class="indent"><strong>The Chart</strong></p>
+
+<p class="indent">The chart vertical axis shows total investment portfolio value &#8212; the sum of all investment account balances &#8212; over time. The horizontal axis is time. Five percentile lines show the spread of results across all simulations:</p>
+
+<ul>
+    <li><strong>P90 (Best 10%)</strong> &#8212; only 1 in 10 simulations produced a portfolio higher than this line at each date. Shown as a dark green dashed line.</li>
+    <li><strong>P75 (Upper Band)</strong> &#8212; 75% of simulations fell below this line. Shown as a solid green line.</li>
+    <li><strong>P50 (Median)</strong> &#8212; half the simulations produced a portfolio above this line and half below. Shown as a thick solid blue line.</li>
+    <li><strong>P25 (Lower Band)</strong> &#8212; only 25% of simulations fell below this line. Shown as a solid orange line.</li>
+    <li><strong>P10 (Worst 10%)</strong> &#8212; only 1 in 10 simulations produced a portfolio lower than this line at each date. Shown as a red dashed line.</li>
+</ul>
+
+<p class="indent">The green shaded band between P75 and P25 shows the middle 50% of all simulated outcomes &#8212; the most likely range of results given the parameters set in Monte Carlo Settings.</p>
+
+<p class="indent">The chart vertical axis is scaled to show the P75 line clearly. Pinch to zoom in or out on the chart. Zooming out reveals the full P90 line if it extends above the visible area.</p>
+
+<p class="indent"><strong>Probability of Success</strong></p>
+
+<p class="indent">The Probability of Success percentage shown at the bottom of the screen indicates how many of the simulations produced a fully funded result from start to finish. The label is shown in green when 80% or more of simulations succeeded, orange when between 60% and 80%, and red when below 60%.</p>
+
+<p class="indent">A simulation is counted as a failure if either of the following occurs at any point during the simulation:</p>
+
+<ol>
+    <li>An expense has an unpaid balance &#8212; either a transfer feeding the expense fell short, or no transfer was set up to cover it at all. A standalone expense with no transfer pointing at it is unpaid every active period and will fail every iteration.</li>
+    <li>The total investment portfolio balance reaches zero.</li>
+</ol>
+
+<p class="indent"><strong>Touching the Chart</strong></p>
+
+<p class="indent">Tap or drag on the chart to open an information panel at the bottom of the screen showing details for the selected date:</p>
+
+<ul>
+    <li>The date and approximate years from the current date.</li>
+    <li>The portfolio value at each percentile (P90, P75, P50, P25, P10) &#8212; values at or below zero are shown as &#8220;Depleted&#8221;.</li>
+    <li>The percentage of simulations still solvent at that date, color-coded the same as the Probability of Success label.</li>
+    <li>A breakdown of how many simulations failed due to portfolio depletion vs. unpaid expenses &#8212; hidden when all simulations are still solvent at that date.</li>
+</ul>
+
+<p class="indent">Tap the panel to dismiss it.</p>
+
+<p class="indent"><strong>No Investment Accounts</strong></p>
+
+<p class="indent">If the Estimator Configuration does not include any investment accounts, the simulation will not run. Add an investment account to enable Monte Carlo projections.</p>
+
+<p class="indent">Press the &#9432; button in the top-right corner for a quick reference guide to reading the chart.</p>
+
+<h2 id="_Toc114482125">3.6&nbsp;&nbsp;&nbsp; Generating/Viewing CSV Reports</h2>
+
+<p class="indent">CSV reports can be opened by a spread sheet application such as Excel, Numbers, etc. CSV reports contain transfer information that is not contained in the line graph.</p>
+
+<p class="indent">On the Estimator Configuration page, press &#8220;Generate/View CSV Reports&#8221; to show the Generate/View CSV Report page.</p>
+
+<ul>
+    <li>Generate/View CSV Reports - Show the Generate/View CSV Report page.
+        <ul>
+            <li>View CSV Reports - Show a list of reports that have been generated. Press a report in the list to see options available for the report such as messaging, email, or opening in another App. To delete a CSV report/file, slide left on the report and select &#8220;Delete&#8221;.</li>
+            <li>Generate CSV Report - Press to show a &#8220;Generate CSV Report&#8221; alert. Enter a filename and press &#8220;Generate&#8221; to create the CSV report/file. An alert will appear when a CSV report completes generation. Press &#8220;View CSV Reports&#8221; to see the generated report in the list of reports. If calculations for the CSV report are taking some time, an alert will periodically appear with the option to continue or cancel generation of the CSV report.</li>
+        </ul>
+    </li>
+</ul>
+
+<p class="indent">CSV reports may be accessed from the iOS &#8220;Files&#8221; App. Open the &#8220;Files&#8221; App and choose the Retirement Estimator folder. You will see CSV report files and exported data files in this folder. Files can be moved from/to this iOS device and other devices using AirDrop, email, iTunes, etc. See tutorials for additional details.</p>
+
+<h2 id="_Toc114482133">3.7&nbsp;&nbsp;&nbsp; How Currency Flows on the Same Date</h2>
+
+<p>When multiple events fall on the same date &mdash; a paycheck arriving, an investment compounding, an expense becoming due, two transfers from the same source firing &mdash; the engine processes them in a fixed order. Understanding that order helps you interpret report values.</p>
+
+<p>For every date in the report, the engine performs these steps, in this order:</p>
+
+<ol>
+    <li><strong>Source values are brought up to date.</strong> The source item (Income, Investment, or Expense behind a transfer) has its running totals rolled forward to the current date. Income earned is accumulated, investment growth is applied at the current rate, expenses accumulate at their current cost. Any scheduled increases that should have taken effect by this date are applied first &mdash; a fixed-amount raise scheduled for today, a percentage rate change taking effect today, an inflation adjustment due today &mdash; so today's transfers see the post-increase values.</li>
+    <li><strong>Destination values are brought up to date.</strong> The destination item (Investment or Expense receiving a transfer) is rolled forward the same way before the transfer is applied to it.</li>
+    <li><strong>Transfers fire in priority order.</strong> Priority is the numeric priority field on each transfer. Lower priority number fires first &mdash; priority 1 fires before priority 2, which fires before priority 3, and so on. Each transfer reads its source's currently-available funds, computes its amount using the rules for its payment type and source type (see &sect;2.5 for the cumulative-target vs. per-fire distinction), and moves the funds: subtracted from the source, added to the destination.</li>
+    <li><strong>Each transfer's effect is visible to the next transfer in the same period.</strong> If two transfers from the same source fire on the same date, the higher-priority transfer fires first and reduces the source's available funds; the next transfer sees the reduced source. This is the load-bearing reason for the same-source same-schedule constraint described in &sect;2.6 &mdash; without it, the lower-priority transfer could fire first by accident of date arithmetic, breaking the priority order you intended.</li>
+    <li><strong>Destination values reflect the transfer immediately.</strong> A transfer to an investment increases that investment's balance right away. A subsequent transfer on the same day from that same investment can pull against the increased balance. A transfer to an expense pays down the expense's outstanding amount immediately; a subsequent transfer to the same expense on the same day sees the reduced outstanding amount.</li>
+    <li><strong>Same-day investment growth uses the post-transfer balance.</strong> When investment growth for the next period compounds, it compounds on the balance <em>after</em> the day's transfers, not before.</li>
+    <li><strong>A transfer is capped by what is actually available.</strong> If a transfer's computed amount exceeds the source's currently-available funds (because earlier same-day transfers have already drawn from it, or because the source simply does not have enough), the transfer is reduced to the available amount. The transfer never overdraws.</li>
+</ol>
+
+<p><strong>Worked example &mdash; fixed transfer + percent transfer from the same Income source.</strong></p>
+
+<p>Today is the 15th of the month. You have these items:</p>
+
+<ul class="indent">
+    <li>Income &#8220;Paycheck&#8221;, $5,000 monthly, paid on the 15th.</li>
+    <li>Transfer &#8220;Pay Mortgage&#8221;, $1,500 fixed monthly from Paycheck to the Mortgage expense, priority 1.</li>
+    <li>Transfer &#8220;Fund 401k&#8221;, 10% monthly from Paycheck to the 401k investment, priority 2.</li>
+</ul>
+
+<p>On the 15th, the engine:</p>
+
+<ol>
+    <li>Brings Paycheck up to date &mdash; $5,000 of new income arrives.</li>
+    <li>Fires &#8220;Pay Mortgage&#8221; first because it is priority 1. $1,500 leaves Paycheck and is applied to the Mortgage expense.</li>
+    <li>Fires &#8220;Fund 401k&#8221; second. The amount is 10% of <em>total income earned to date</em> (cumulative-target semantics for an Income source &mdash; see &sect;2.5) minus what has already been moved to the 401k. The Mortgage transfer does not change this calculation, because cumulative-target is based on total earned income, not on what remains in Paycheck after other transfers.</li>
+</ol>
+
+<p>If you swap the priorities so &#8220;Fund 401k&#8221; fires first and &#8220;Pay Mortgage&#8221; fires second, the numbers come out exactly the same in this example. That is because the Mortgage transfer is fixed (always $1,500 regardless of order) and the 401k transfer's percent is computed from total earned income (independent of what is left in Paycheck at the moment it fires).</p>
+
+<p><strong>Worked example &mdash; two percent transfers from the same Investment source.</strong></p>
+
+<p>Today is the 1st of the year. You have these items:</p>
+
+<ul class="indent">
+    <li>Investment &#8220;Brokerage&#8221;, current balance $10,000.</li>
+    <li>Transfer &#8220;Living Expenses Draw&#8221;, 10% yearly from Brokerage to the Living Expenses expense, priority 1.</li>
+    <li>Transfer &#8220;Charity Draw&#8221;, 5% yearly from Brokerage to the Charity expense, priority 2.</li>
+</ul>
+
+<p>On the 1st, the engine:</p>
+
+<ol>
+    <li>Brings Brokerage up to date.</li>
+    <li>Fires &#8220;Living Expenses Draw&#8221; first because it is priority 1. 10% of the current balance &mdash; $1,000 &mdash; leaves Brokerage. The balance is now $9,000.</li>
+    <li>Fires &#8220;Charity Draw&#8221; second. 5% of the <em>current balance</em> &mdash; $450 &mdash; leaves Brokerage, because percent transfers from an Investment source are per-fire (see &sect;2.5), not cumulative-target.</li>
+</ol>
+
+<p>If you swap the priorities so &#8220;Charity Draw&#8221; fires first, you get different numbers: 5% of $10,000 = $500 to Charity, then 10% of $9,500 = $950 to Living Expenses. Same total drawn ($1,450 vs $1,450 in this 2-transfer case), but each individual draw is different, and over many years the compounding outcomes will diverge. This is why priority matters more for percent draws from investments than for percent draws from income or expense sources.</p>
+
+<p><strong>Common questions this section answers.</strong></p>
+
+<ul class="indent">
+    <li><em>&#8220;Why did transfer A get more than I expected today?&#8221;</em> A higher-priority transfer from the same source may have drawn first, but if A is a percent transfer on an Income or Expense source the answer is more likely that A's denominator (total earned income or total accumulated expense) is larger than you remembered. Look at the source's total-to-date in the report, not just &#8220;how much arrived today.&#8221;</li>
+    <li><em>&#8220;Why did transfer B get less than I expected today?&#8221;</em> Either a higher-priority transfer from the same source already drew (Step 4 above), the source did not have enough (Step 7), or B is a percent transfer on an Investment source whose balance was lower than expected (Step 5).</li>
+    <li><em>&#8220;Why did changing priorities not change my report?&#8221;</em> When the source is Income or Expense and the transfer uses Fixed or cumulative-target Percent, priority order does not affect totals &mdash; only the recording sequence. Priority always matters when the source is an Investment <em>and</em> at least one same-source same-date transfer is a Percent.</li>
+    <li><em>&#8220;What if I change a transfer's begin date so it no longer fires on the same day as a sibling?&#8221;</em> The engine no longer needs to apply same-date ordering for that pair, so priority becomes irrelevant for that pair. The cost: their schedule alignment is no longer enforced, and the same-source same-schedule constraint may surface as a conflict (see &sect;2.6).</li>
+    <li><em>&#8220;An income raise is scheduled for today. Does today's paycheck use the old amount or the raised amount?&#8221;</em> The raised amount (Step 1 above). Scheduled increases apply <em>before</em> the day's transfers fire.</li>
+</ul>
+
+<h1 id="_Toc114482126">4.0&nbsp;&nbsp;&nbsp; The Settings Tab</h1>
+
+<h2 id="_Toc114482127">4.1&nbsp;&nbsp;&nbsp; In-App Purchases</h2>
+
+<p class="indent">An In-App purchase is required for unrestricted creation of Income, Investments, Expenses, Transfers, and Estimator Configurations.</p>
+
+<p class="indent">An In-App purchase is required to generate CSV reports.</p>
+
+<p class="indent">An In-App purchase is required to import/export data. Importing a data file may also require the In-App purchase for unrestricted creation of Income, Investments, Expenses, Transfers, and Estimator Configurations.</p>
+
+<p class="indent">If the App is deleted and reinstalled, then In-App purchases can be restored and do not require repurchasing.</p>
+
+<h2 id="_Toc114482128">4.2&nbsp;&nbsp;&nbsp; Enabling App Authentication</h2>
+
+<p class="indent">If you prefer authentication to access the App, select &#8220;Authentication&#8221; and then &#8220;Enable Password&#8221;. Enter and verify a password in the alert. If the iOS device supports biometric authentication, enable biometric access by enabling Touch ID or Face ID.</p>
+
+<p class="indent">If Authentication is enabled, the Retirement Estimator App view will be blurred when entering background mode. If the App is in background mode for more than fifteen minutes, App authentication will be required again to access the App.</p>
+
+<p class="indent">If the password is required to access the Retirement Estimator App and the password is unknown, the Retirement Estimator App will have to be deleted and reinstalled to use it again. All data will be lost if the Retirement Estimator App is deleted.</p>
+
+<h2 id="_Toc114482129">4.3&nbsp;&nbsp;&nbsp; Importing/Exporting Data</h2>
+
+<p class="indent">App data you entered can be exported for backup or transferred to another iOS device and then imported. See the tutorials for additional details.</p>
+
+<ul>
+    <li>Import/Export Data - Show the Import/Export Data page.
+        <ul>
+            <li>Import Data - Show a list of data files that have been exported and plan files in the Retirement Estimator folder (see Plan Files below). Press a data file in the list to import the data file. To delete a data file, slide left on the data file and select &#8220;Delete&#8221;.
+                <ul>
+                    <li>Choosing a data file offers Replace, Merge, Compare, or Cancel.</li>
+                    <li>Replace - Remove the data on this device and use the data in the file.</li>
+                    <li>Merge - Add the data in the file to the data already on this device.</li>
+                    <li>Compare - Add the data in the file alongside the data already on this device, kept separate so the two can be graphed against each other. See Compare Import below.</li>
+                    <li>Cancel - Leave the data on this device unchanged.</li>
+                </ul>
+            </li>
+            <li>Export Data - Export all data you entered to a data file. Data files are not human readable.</li>
+        </ul>
+    </li>
+</ul>
+
+<p class="indent"><b>Compare Import</b></p>
+
+<p class="indent">Compare brings in an exported data file and keeps it separate from the data already on this device, so you can graph an earlier version of your plan against your current one. Export a data file whenever you want a record of your plan, then months or years later import that file with Compare to see how the plan has changed.</p>
+
+<ul>
+    <li>Every Income, Investment, Expense, Transfer, and Estimator Configuration in the file is added to this device. Nothing already on this device is changed, moved, or removed.</li>
+    <li>&#8220;Compare&#8221; is added to the end of the names coming from the file, so the two copies can be told apart in the Money and Estimator tabs. Importing the same file again numbers the names &#8220;Compare 2&#8221;, &#8220;Compare 3&#8221;, and so on.</li>
+    <li>The two copies are kept apart in every estimator configuration. The imported items are switched off in the estimator configurations already on this device, and the items already on this device are switched off in the estimator configurations that came from the file. Each estimator configuration therefore graphs and reports one copy of the plan, exactly as it did before the import.</li>
+    <li>The imported estimator configurations keep the output options, colors, dates, and schedules saved in the file.</li>
+    <li>Transfers keep pointing at the items they came in with. A transfer from the file connects the file&#8217;s income, investments, and expenses, never the ones already on this device.</li>
+    <li>To graph the two against each other, open one estimator configuration and press &#8220;Compare Graphs&#8221; (Section 3.4).</li>
+</ul>
+
+<p class="indent">An Income, Investment, Expense, or Transfer added after a Compare import belongs to neither copy, so it appears in every estimator configuration until you switch it off in the ones where you do not want it. Set this on the Line Graph and CSV Report output options page (Section 3.2).</p>
+
+<p class="indent"><b>Plan Files</b></p>
+
+<p class="indent">A plan file (ending in &#8220;.financialplan&#8221;) contains a whole plan: its Income, Investments, Expenses, Transfers, and Estimator Configurations.</p>
+
+<ul>
+    <li>Open a plan file from the Files App, Mail, Messages, or AirDrop, or on a Mac double-click it. Retirement Estimator opens and offers Replace, Merge, Compare, or Cancel, the same choices as Import Data above. Replace asks you to confirm before your current data is replaced.</li>
+    <li>Importing a plan file requires the Import/Export Data In-App purchase, and may also require the In-App purchase for unrestricted creation of Income, Investments, Expenses, Transfers, and Estimator Configurations (Section 4.1). With Merge or Compare, the items already in Retirement Estimator count toward those limits too. Both purchases are included in the Premium Package. The plan is checked before either purchase is asked for, so any problems can be fixed first.</li>
+    <li>Merge adds every item in the plan to the data already on this device, and every estimator configuration includes both. Merging the same plan again adds its items again. To keep a plan separate from your current data so the two can be graphed against each other, use Compare.</li>
+    <li>The whole plan is checked before anything is saved. If the plan has a problem, nothing is imported and every problem is listed.</li>
+    <li>A plan file placed in the Retirement Estimator folder is listed on the Import Data page and can be imported from there like a data file.</li>
+    <li>Plan files are human readable. A plan file opened from the Files App, Mail, Messages, AirDrop, or a Mac is not kept in the Retirement Estimator folder after it is opened. A plan file you place in the Retirement Estimator folder stays there after it is imported; to delete it, slide left on it on the Import Data page and select &#8220;Delete&#8221;. The imported plan is stored and protected like any data you enter.</li>
+</ul>
+
+<p class="indent">Data files may be accessed from the iOS &#8220;Files&#8221; App. Open the &#8220;Files&#8221; App and choose the Retirement Estimator folder. You will see exported data files, plan files you placed there, and CSV report files in this folder. Files can be moved from/to this iOS device and other devices using AirDrop, email, iTunes, etc. See tutorials for additional details.</p>
+
+<h2 id="_Toc114482132">4.4&nbsp;&nbsp;&nbsp; Monte Carlo Settings</h2>
+
+<p class="indent">In the Settings tab, press &#8220;Monte Carlo Settings&#8221; to configure the parameters used by the Monte Carlo simulation.</p>
+
+<ul>
+    <li><strong>Simulations</strong> &#8212; The number of simulation runs performed each time Monte Carlo Simulation is launched. A higher number produces a more stable Probability of Success result but takes longer to calculate. Default is 1,000.</li>
+    <li><strong>Investment Volatility (&#963;%)</strong> &#8212; Controls how much each investment&#8217;s actual return rate may vary from the rate entered for that investment at each calculation period, expressed as a standard deviation percentage. A higher value produces a wider spread of outcomes across the P10&#8211;P90 lines. Default is 12.0%.</li>
+    <li><strong>Income Growth Volatility (&#963;%)</strong> &#8212; Controls how much income growth may vary from the growth rate entered for each income item per simulation run. Default is 1.0%.</li>
+    <li><strong>Expense Inflation Volatility (&#963;%)</strong> &#8212; Controls how much expense inflation may vary from the inflation rate entered for each expense item at each calculation period. Only expenses with a percentage inflation rate entered are affected; fixed-cost expenses are not varied. Default is 1.0%.</li>
+</ul>
+
+<p class="indent">Press &#8220;Reset to Defaults&#8221; to restore all four settings to their default values.</p>
+
+<h2 id="_Toc114482130">4.5&nbsp;&nbsp;&nbsp; Delete All Data</h2>
+
+<p class="indent">Press &#8220;Delete All Data&#8221; to delete all Income, Investments, Expenses, Transfers, and Estimator Configurations. CSV report files and exported data files will not be deleted.</p>
+
+<h2 id="_TocShortcuts">4.6&nbsp;&nbsp;&nbsp; Shortcuts Actions</h2>
+
+<p class="indent">Retirement Estimator adds two actions to the Shortcuts App. They can be used in your own shortcuts, and on a Mac they can be run from the Terminal with the <i>shortcuts run</i> command.</p>
+
+<ul>
+    <li><strong>Import Plan</strong> &#8212; Imports a plan file (see Plan Files in Section 4.3) using Replace, Merge, or Compare, and returns a list of what was imported. Replace asks you to confirm first. Requires the same In-App purchases as importing from the Import Data page.</li>
+    <li><strong>Plan Summary</strong> &#8212; Returns a text summary of an Estimator Configuration: the balance of each investment at the end of each year, when investments run out, whether every expense is paid, and the income earned. The numbers are the same values the line graph shows, in future dollars. If there are transfer scheduling conflicts, they are listed first (Section 2.6). Requires the Import/Export Data In-App purchase.</li>
+</ul>
+
+<p class="indent">If authentication is enabled (Section 4.2), the actions run only while Retirement Estimator is unlocked. Retirement Estimator sends nothing anywhere; the text an action returns goes only to the shortcut or app that ran it.</p>
+
+</body>
+</html>

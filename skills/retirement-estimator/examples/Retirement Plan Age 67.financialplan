@@ -1,0 +1,28 @@
+{
+  "planName": "Retirement Plan Age 67",
+  "planFormat": 1,
+  "notes": "Example: retired at 67, Social Security, a 401(k) and savings; savings is spent first.",
+  "income": [
+    {"id": "ss", "name": "Social Security", "amount": 3000, "every": "month", "growthPercentPerYear": 2.5}
+  ],
+  "investments": [
+    {"id": "k401", "name": "401(k)", "balance": 500000, "returnPercentPerYear": 7, "compound": "month"},
+    {"id": "sav", "name": "Savings", "balance": 20000, "returnPercentPerYear": 3, "compound": "month",
+     "taxOnGrowthPercent": 12}
+  ],
+  "expenses": [
+    {"id": "bills", "name": "Monthly Bills", "amount": 3500, "every": "month", "growthPercentPerYear": 3},
+    {"id": "ptax", "name": "Property Tax", "amount": 333.33, "every": "month", "growthPercentPerYear": 3,
+     "notes": "$4,000 a year made monthly: every transfer from one source must share one schedule."}
+  ],
+  "transfers": [
+    {"from": "ss", "to": "bills", "percent": 100},
+    {"from": "sav", "to": "bills", "percent": 100},
+    {"from": "sav", "to": "ptax", "percent": 100},
+    {"from": "k401", "to": "bills", "percent": 100, "taxPercent": 12, "taxMode": "add"},
+    {"from": "k401", "to": "ptax", "percent": 100, "taxPercent": 12, "taxMode": "add"}
+  ],
+  "scenarios": [
+    {"name": "My Retirement", "begin": "2026-10-01", "end": "2059-10-01", "reportBy": "month"}
+  ]
+}
