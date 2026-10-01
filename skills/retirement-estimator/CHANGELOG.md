@@ -2,6 +2,10 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.2.1 (2026-10-01)
+
+- Example scenarios added to the 1.0.0 notes, to show what Claude does for you.
+
 ## 1.2.0 (2026-10-01)
 
 - **Required minimum distributions (RMDs).** If you have a traditional 401(k) or IRA, Claude
@@ -23,3 +27,18 @@ The newest version is first. The skill's version is separate from the app's vers
 
 - First release. Claude interviews you one question at a time, builds your plan as a file that
   Retirement Estimator imports, and helps you read the results and try what-ifs.
+- **Example: planning retirement.** "I'm 62 and want to retire at 65." Claude asks about your
+  Social Security, accounts and spending, one question at a time, builds the plan, and after you
+  import it shows you how long your money lasts.
+- **Example: a monthly budget.** "Does my pay cover my bills, and can I save $300 a month?" Claude
+  sets up your pay, bills and savings goal so you can see each month where your money goes.
+- **Example: what-ifs.** "What if I retire at 67 instead?" Claude makes a second version of your
+  plan with only that change, and you see both on one graph.
+- **Example: which account to spend first.** Social Security first, then savings, then the 401(k):
+  Claude sets up the order you choose, and you see when each account is drawn down.
+- **Example: a couple.** Claude sets up each person's income and accounts, so the plan covers both
+  of you.
+- **Example: a big one-time cost.** A new car in 2028 or a roof repair: Claude adds it on its date
+  and shows the effect on your savings.
+- **Example: reading your results.** Send Claude a screenshot of your graph and it explains what
+  it shows: whether the money lasts, and the few numbers that matter most.

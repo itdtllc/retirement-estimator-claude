@@ -27,7 +27,7 @@ The files in this skill:
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.2.0** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.2.1** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip; to update, they upload the new zip the same way.
 
