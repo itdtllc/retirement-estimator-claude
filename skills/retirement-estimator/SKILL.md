@@ -157,10 +157,28 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
 - **Contributions while working:** a percent transfer from the paycheck into the account (into an
   investment there's no cap, so the full percent moves). Or use `contribution` for money that comes
   from outside the plan.
-- **Inflation-adjusted withdrawals** from an account (§2.4 note): transfers can't grow, so route the
-  money through an expense that grows. For example: 401(k) → 100% → expense "401(k) Draw"
-  ($25,000/yr, +3%/yr) → 100% → Savings. The expense only measures out the amount; it isn't a real
-  cost.
+- **Moving a set or growing amount between accounts: route it through an expense** (§2.4 note).
+  Transfers can't grow, but expenses can, and a transfer into an expense is capped at what the
+  expense is owed. So `source → 100% → expense → 100% → investment` moves exactly the expense's
+  amount each period. The expense only measures out the amount; it isn't a real cost. Name it for
+  what it does (e.g. "401(k) Draw") and say so in its `notes`. Uses:
+  - *Inflation-adjusted withdrawal:* 401(k) → expense "401(k) Draw" ($30,000/yr, +3%/yr) → Savings.
+    Savings gets $30,000, then $30,900, $31,827…, whatever the bills are that year.
+  - *Roth conversions:* Traditional IRA → expense "Roth Conversion" ($40,000/yr, `begin`/`end` =
+    the conversion years) → Roth IRA, with `taxPercent` on the first transfer.
+  - *Shifting to safer investments with age:* Stocks → expense "Rebalance" ($20,000/yr, +3%/yr) →
+    Bonds.
+  - *Contributing up to a limit that rises:* Paycheck → expense "401(k) Limit" (the limit ÷ 12
+    monthly, +2.5%/yr) → 401(k). The contribution follows the limit and shrinks if pay runs short.
+
+  Rules for these (all checked against the app):
+  - **List the transfer into the expense before the transfer out of it.** Otherwise the money
+    waits a whole period inside the expense and arrives one period late.
+  - **Give the expense the same `end` as what feeds it** (e.g. the paycheck's end, the conversion
+    years). After its source stops or runs dry, the expense keeps charging and shows as unpaid,
+    and Monte Carlo counts that as a failure (§3.5). A 401(k) running dry *is* a real failure.
+  - **Tax with `taxMode: "add"` is grossed up:** 22% on a $30,000 draw takes $38,461.54 from the
+    401(k) ($30,000 ÷ 0.78); the $8,461.54 tax is 22% of the full withdrawal.
 - **Two people:** give each person their own income items, and give each person's accounts their own
   investment items.
 - **No field for it? Combine items.** Never tell the person the app can't handle something just

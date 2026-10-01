@@ -77,7 +77,7 @@ first (the drawdown order) is set by this order.
 | `percent` **or** `amount` | yes | Exactly one of the two |
 | `every` | | Into an expense: always the expense's schedule (don't set it). Into an investment: default is the source's schedule |
 | `taxPercent` | | Tax on the transfer |
-| `taxMode` | | `"add"` (default): the source pays the tax on top and the destination gets the full amount (401(k) withdrawal paying a bill). `"subtract"`: the tax comes out of the transfer |
+| `taxMode` | | `"add"` (default): the source pays the tax on top and the destination gets the full amount (401(k) withdrawal paying a bill). The tax is grossed up: 22% on $30,000 takes $38,461.54 from the source ($30,000 ÷ 0.78). `"subtract"`: the tax comes out of the transfer |
 | `name` | | Default `"<from> to <to>"` |
 | `begin`, `end` | | |
 
@@ -89,6 +89,10 @@ How the app applies a transfer (HowToUse.html §2.5, §2.7, §3.7):
 - **Percent from an income or expense** is a percent of the total earned (or accumulated) to date,
   minus prior transfers (help §2.7 and the §3.7 worked example). The schedule doesn't change it.
 - **Percent from an investment** is a percent of the balance at that moment, recalculated each time.
+- **From an expense into an investment** moves what the expense has received and not yet passed on.
+  This is how an expense is used to measure out a set or growing amount between accounts (SKILL.md,
+  "route it through an expense"). List the transfer into the expense first, or the money arrives
+  one period late.
 - **Transfers never grow.** A fixed `amount` stays the same forever. To pay a bill that rises with
   inflation, use `"percent": 100` into the expense and give the expense its
   `growthPercentPerYear`.
