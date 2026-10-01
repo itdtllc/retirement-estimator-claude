@@ -1,5 +1,7 @@
 # Retirement Estimator for Claude
 
+**Version 1.2.0.** See `CHANGELOG.md` for what's new in each version.
+
 This skill teaches Claude how to set up your financial plan in **Retirement Estimator** (ITDT LLC):
 a retirement plan, a budget for your spending, or any other plan.
 Claude asks you questions one at a time, builds your plan as a file, and you import it into the app.

@@ -22,7 +22,14 @@ The files in this skill:
   Read the relevant section whenever you're unsure. Where anything else disagrees, the help wins.
 - `reference/plan_format.md`: the plan file you write (JSON, saved as `.financialplan`), and how the app
   applies each field.
+- `reference/rmd.md`: required minimum distributions from pre-tax accounts: how to check a plan
+  against them, and how to model them when that fits.
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
+- `CHANGELOG.md`: what changed in each version of this skill.
+
+This is **version 1.2.0** of the skill. If the person asks which version they have, or what's new,
+tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
+itdtllc.com/data/RetirementEstimatorSkill.zip; to update, they upload the new zip the same way.
 
 The plan file is plain JSON. You write it; the app checks it and converts it when it's imported.
 No tools or installs are needed on the person's computer.
@@ -112,7 +119,23 @@ matters.
 8. Tax: on pay (if they gave it before tax), on pension and Social Security, and on withdrawals from
    pre-tax accounts.
 9. Which account should pay the bills first when income isn't enough.
-10. A spouse or partner? Then ask their income and accounts the same way.
+10. **RMDs**, if they have a pre-tax account and the plan reaches RMD age (`reference/rmd.md`).
+    The starting age is 73, or 75 if born 1960 or later. If their age leaves that unclear (e.g. 66
+    in 2026), ask the birth year first, as its own question. Then explain what an RMD is and ask
+    whether to include an estimate. For example: "Because your IRA is pre-tax, the IRS requires you
+    to take out at least a set amount from it each year starting at age 73. This is called a
+    required minimum distribution, or RMD. It's the account's balance at the end of the year
+    before, divided by a factor for your age: about 3.8% at 73, rising each year. The amount taken
+    out is taxed as income. Would you like your plan to include an estimate of your RMDs?" Use
+    their account's name, their starting age, and the percent for that age (1 ÷ its factor: about
+    4.1% at 75).
+    - **No:** leave RMDs out and don't check them.
+    - **Yes, and the account pays no bills:** RMDs are modeled as transfers, which needs Unlimited
+      Finance Entry. If you don't know whether they have it, ask (one question). Without it, offer
+      the check after the import instead.
+    - **Yes, and the account pays bills:** tell them you'll check after the import that the
+      planned withdrawals reach each year's RMD.
+11. A spouse or partner? Then ask their income and accounts the same way.
 
 **Default assumptions.** State each one when you use it, and change it if the person asks:
 
@@ -121,7 +144,8 @@ matters.
 | Social Security / COLA pension | +2.5% a year |
 | Stock-heavy account | 7% a year |
 | Balanced account | 5% a year |
-| Cash / savings | 3% a year, interest taxed at their rate |
+| Bond-heavy account (mostly bonds and cash) | 4% a year |
+| Cash / savings | 3% a year, interest taxed at their rate (12% if they haven't given one) |
 | Bills | +3% a year inflation |
 | Tax on pre-tax withdrawals | 12% |
 | Tax on pay given before tax (income, state and payroll taxes together) | 22% |
@@ -142,6 +166,10 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
 - **Drawdown order is transfer order.** List income → bill transfers first, then the account that
   should be spent first, then the next. Example: Social Security → bills, then Savings → bills,
   then 401(k) → bills (§3.7).
+- **An account that never pays bills:** if the person keeps an account out of the drawdown order
+  (e.g. "don't touch the IRA"), tell them: if the accounts that do pay run out, the bills show as
+  unpaid even with money left in that account, and Monte Carlo counts it as a failure. Offer a
+  what-if with that account added last.
 - **Every income is taxed, or is take-home.** Pay given before tax, pensions and Social Security
   get a `taxPercent` on the income item, which takes it out of each payment. Take-home pay gets none.
   Name the tax on each income in your summary so the person can check it. (A tax on the whole
@@ -157,6 +185,11 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
 - **Contributions while working:** a percent transfer from the paycheck into the account (into an
   investment there's no cap, so the full percent moves). Or use `contribution` for money that comes
   from outside the plan.
+- **Pay left over after bills:** money an income doesn't transfer stays in the income and never
+  reaches an account. If pay is more than spending, add income → 100% → the savings account,
+  listed after the income's bill transfers. It moves only what's left each period (a percent from
+  an income is of what's left after earlier transfers, §2.7). Same schedule and start day as the
+  bill transfer.
 - **Moving a set or growing amount between accounts: route it through an expense** (§2.4 note).
   Transfers can't grow, but expenses can, and a transfer into an expense is capped at what the
   expense is owed. So `source → 100% → expense → 100% → investment` moves exactly the expense's
@@ -179,6 +212,10 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
     and Monte Carlo counts that as a failure (§3.5). A 401(k) running dry *is* a real failure.
   - **Tax with `taxMode: "add"` is grossed up:** 22% on a $30,000 draw takes $38,461.54 from the
     401(k) ($30,000 ÷ 0.78); the $8,461.54 tax is 22% of the full withdrawal.
+- **RMDs** (`reference/rmd.md`), only if they asked for an estimate (interview question 10). If
+  nothing else draws from the pre-tax account, model the RMDs as transfers. If the account pays
+  bills, don't model them (the app would take them on top); tell the person you'll check after the
+  import that the planned withdrawals reach each year's RMD.
 - **Two people:** give each person their own income items, and give each person's accounts their own
   investment items.
 - **No field for it? Combine items.** Never tell the person the app can't handle something just
@@ -266,6 +303,10 @@ each step. Use the app's exact names (help §2–§3):
    - **Monte Carlo Simulation** (same scenario page): the chance the plan works when returns and
      inflation vary (§3.5).
    - **Compare Graphs** (same page): two scenarios on one graph, for what-ifs (§7).
+5. **RMD check:** if they asked for an RMD estimate and the pre-tax account pays bills, check that
+   each year's withdrawals reach the RMD (`reference/rmd.md`). It needs the account's yearly
+   balances: a CSV report gives exact numbers, and Plan Summary or the graph gives an estimate.
+   Tell them which years fall short, if any, and offer a what-if.
 
 The results come from the app's own calculations. You can't work them out yourself, so always read
 them from the app: a screenshot, the Plan Summary text, a CSV report, or what they tell you.
