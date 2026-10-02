@@ -27,9 +27,11 @@ The files in this skill:
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.2.1** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.2.2** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
-itdtllc.com/data/RetirementEstimatorSkill.zip; to update, they upload the new zip the same way.
+itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: Settings ▸
+**Skills** ▸ **retirement-estimator** ▸ **⋯** ▸ **Replace**, then choose the new zip (the skill keeps
+its name). In Claude Code: ask Claude Code to update the skill from the same link.
 
 The plan file is plain JSON. You write it; the app checks it and converts it when it's imported.
 No tools or installs are needed on the person's computer.

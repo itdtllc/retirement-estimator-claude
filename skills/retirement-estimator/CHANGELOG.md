@@ -2,6 +2,11 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.2.2 (2026-10-02)
+
+- Updating the skill: Claude now tells you to use **Replace** in Claude's Settings ▸ Skills
+  (⋯ ▸ Replace) to install a newer version, instead of uploading it again.
+
 ## 1.2.1 (2026-10-01)
 
 - Example scenarios added to the 1.0.0 notes, to show what Claude does for you.
