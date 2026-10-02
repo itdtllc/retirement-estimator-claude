@@ -22,6 +22,9 @@ leave RMDs out of the plan and skip the check. If yes:
 
 - **Nothing else draws from the account:** model the RMDs as transfers (below). If they don't
   have Unlimited Entry, say it's needed for this, and offer the check instead.
+- **The account's only withdrawal moves money into savings** (e.g. 401(k) → a measuring expense →
+  Savings, SKILL.md "route it through an expense"), and bills are paid from savings: the RMD
+  transfers can replace that withdrawal ("Replacing a withdrawal", below).
 - **The account pays bills:** do the check below after the import.
 
 ## Check the plan against the RMDs
@@ -31,7 +34,8 @@ After the import (SKILL.md §6):
 1. Get the account's balance at the start of each year from the RMD age onward, and what was
    withdrawn from it that year. A **CSV report** gives both exactly: the investment's balance by
    period, and in TRANSFERS the amount of each transfer out of it by period (use the amount
-   including tax). **Plan Summary** gives balances by year only; estimate the withdrawals as
+   including tax). The CSV's January amount is after January's withdrawal, so add that back to
+   get the December 31 balance (`csv_report.md`). **Plan Summary** gives balances by year only; estimate the withdrawals as
    start balance × (1 + yearly return) − end balance, and call the result an estimate.
 2. RMD for each year = start balance ÷ factor.
 3. List the years where the withdrawals are below the RMD, with both numbers. Withdrawals at or
@@ -63,6 +67,44 @@ The monthly percent `p` makes 12 monthly withdrawals add up to balance ÷ factor
 `p × (1 − q¹²) / (1 − q) = 1 / factor`, where `q = (1 − p)(1 + m)` and `m = (1 + yearly return)^(1/12) − 1`.
 Solve for `p` numerically (e.g. by bisection) and give it to 4 decimal places as a percent.
 Dividing 1 by (12 × factor) is not close enough: it under-withdraws by up to 4% at older ages.
+
+## Replacing a withdrawal
+
+When the account already makes a regular withdrawal into savings and the person wants RMDs in the
+plan, adding RMD transfers on top would take both. Instead:
+
+1. End the old withdrawal (the transfers into and out of its measuring expense, and the expense
+   itself) on December 31 of the year before the first RMD year.
+2. Add the RMD transfers (below) from January 1 of the first RMD year, into the same savings
+   account, at the **top** of the priority list (the old withdrawal's place). Bill transfers from
+   savings stay after them, so each month's RMD has arrived before bills are paid.
+3. Only one withdrawal comes out of the account at a time, so nothing is taken twice.
+
+This is exact when the RMD is at least what the old withdrawal would have taken; the RMD is a
+minimum. After the import, check it with a CSV report: compare the first RMD year's total with the
+old withdrawal's last full year. If the RMD is smaller in some years, the person would withdraw
+more than the minimum then; keep the old withdrawal running for those years instead.
+
+**Two owners, one account item:** if a couple's pre-tax accounts are one investment item and they
+ask to treat it as one person's, use that person's birth year. It's exact if one person owns it
+all, and close if they're near in age; say so in one line. Otherwise give each person's account its
+own item.
+
+## Tax on the RMDs
+
+RMDs are taxed as ordinary income, and large ones usually push the rate above what the person used
+for smaller withdrawals. If they ask you to choose a rate, estimate the **average rate on the RMD
+alone**: tax on all income with the RMD, minus tax without it, divided by the RMD. Use their filing
+status (ask if unknown), the standard deduction, current brackets indexed for inflation (about
+2.5% a year), 85% of Social Security taxable at these incomes, and their state's income tax. Say
+it's an estimate, list the assumptions, mention that a surviving spouse files as single (narrower
+brackets) and that tax law can change, and suggest a tax professional. Because each RMD transfer
+covers one year, each can get its own `taxPercent` if the rate changes much over the years;
+otherwise one rounded rate for all keeps it simple.
+
+Example (invented numbers): a married couple with a $30,000 pension, $25,000 of Social Security and a
+$200,000 RMD, in today's brackets. Most of the RMD falls in the 22% bracket and some in lower ones,
+so the average rate on it comes out near 18%, well above the 12% often used for smaller withdrawals.
 
 ## Factors and monthly percents
 

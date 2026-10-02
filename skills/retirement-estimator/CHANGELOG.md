@@ -2,6 +2,24 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.3.0 (2026-10-02)
+
+- **Changing a plan that's already in the app.** The app can't export a plan file, so Claude rebuilds
+  your plan from a **CSV report**, which lists every item's settings (transfers in priority order).
+  Claude reads only the settings rows to keep usage down, makes the changes you ask for, and
+  suggests an Export Data backup before you import with Replace.
+- **New reference on CSV reports:** their layout, how each column maps to the plan file, and what to
+  watch for (investment returns shown per period, percents shown rounded, balances shown
+  after that day's transfers).
+- **Lower usage with repeat CSV reports.** When you send a new report, Claude compares it with the
+  previous one and tells you only what changed, instead of reading the whole file again. It also
+  checks a newly imported plan against the file it built.
+- **RMDs that replace a withdrawal.** If your 401(k) already sends a regular withdrawal to savings,
+  Claude can replace it with RMDs from the first RMD year, at the same priority, so nothing is taken
+  twice, then check with a CSV report that the RMDs are the larger amount.
+- **Tax on RMDs.** If you ask, Claude estimates an average tax rate for your RMDs and explains its
+  assumptions.
+
 ## 1.2.2 (2026-10-02)
 
 - Updating the skill: Claude now tells you to use **Replace** in Claude's Settings ▸ Skills

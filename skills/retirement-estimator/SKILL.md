@@ -1,6 +1,6 @@
 ---
 name: retirement-estimator
-description: Set up and explore a financial plan in the Retirement Estimator app by ITDT LLC (iPhone, iPad, Mac): a retirement plan, a spending budget, or any plan of income, savings, investments and expenses over time. Use when the user wants help entering their finances into Retirement Estimator, building or changing a Retirement Estimator plan file (.financialplan), or asking what-if questions about a plan in that app.
+description: "Set up and explore a financial plan in the Retirement Estimator app by ITDT LLC (iPhone, iPad, Mac): a retirement plan, a spending budget, or any plan of income, savings, investments and expenses over time. Use when the user wants help entering their finances into Retirement Estimator, building or changing a Retirement Estimator plan file (.financialplan), or asking what-if questions about a plan in that app."
 ---
 
 # Retirement Estimator for Claude
@@ -24,10 +24,12 @@ The files in this skill:
   applies each field.
 - `reference/rmd.md`: required minimum distributions from pre-tax accounts: how to check a plan
   against them, and how to model them when that fits.
+- `reference/csv_report.md`: how a CSV report from the app is laid out, how to read it cheaply,
+  and how to rebuild a plan from it.
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.2.2** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.3.0** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: Settings ▸
 **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸ **Replace**, then choose the new zip (the skill keeps
@@ -215,9 +217,11 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
   - **Tax with `taxMode: "add"` is grossed up:** 22% on a $30,000 draw takes $38,461.54 from the
     401(k) ($30,000 ÷ 0.78); the $8,461.54 tax is 22% of the full withdrawal.
 - **RMDs** (`reference/rmd.md`), only if they asked for an estimate (interview question 10). If
-  nothing else draws from the pre-tax account, model the RMDs as transfers. If the account pays
-  bills, don't model them (the app would take them on top); tell the person you'll check after the
-  import that the planned withdrawals reach each year's RMD.
+  nothing else draws from the pre-tax account, model the RMDs as transfers. If the account's only
+  withdrawal moves money into savings (not straight into bills), the RMD transfers can *replace*
+  that withdrawal from the first RMD year (`reference/rmd.md`, "Replacing a withdrawal"). If the
+  account pays bills, don't model them (the app would take them on top); tell the person you'll
+  check after the import that the planned withdrawals reach each year's RMD.
 - **Two people:** give each person their own income items, and give each person's accounts their own
   investment items.
 - **No field for it? Combine items.** Never tell the person the app can't handle something just
@@ -314,7 +318,8 @@ The results come from the app's own calculations. You can't work them out yourse
 them from the app: a screenshot, the Plan Summary text, a CSV report, or what they tell you.
 
 **Suggestion: a detailed check with a CSV report.** Offer it, don't push it. A CSV report has every
-period in detail, so you can check the plan closely. It needs the **CSV Reports** purchase (included
+item's settings and every period in detail, so you can check the plan closely (layout and reading
+tips: `reference/csv_report.md`). It needs the **CSV Reports** purchase (included
 in Premium).
 
 **Before they make one, tell them plainly about usage and get a yes.** A CSV check can use a large
@@ -376,12 +381,38 @@ with `shortcuts run`.
 
 If they want to keep the change, update the main plan file and import it with **Replace** (ask first).
 
+### Changing a plan that's already in the app
+
+When the person wants you to change a plan they've already entered or imported, skip the interview.
+You need what's in the app now:
+
+1. **The plan file they imported before**, if the app's data still matches it. It's often still in
+   the Files app (Downloads, or On My iPhone/iPad ▸ Retirement Estimator). Ask what they've changed
+   in the app since.
+2. **Otherwise, a CSV report** of their scenario. It lists every item's settings, so you can rebuild
+   the plan from it exactly (`reference/csv_report.md`). Read only the settings rows.
+3. If they don't have the CSV Reports purchase: screenshots of each item on the **Money** tab.
+
+The app can't export a `.financialplan` file, and its **Export Data** file is encrypted, so neither
+of those works.
+
+Then:
+- Rebuild the plan with the same item names, settings and transfer order, and make only the
+  changes they ask for. When they ask to move old start dates forward, shift items that started at
+  the scenario's begin to the new date, and keep any gaps between start dates (e.g. bills that
+  start one month after the accounts) unless they say otherwise; say so in one line.
+- Summarize what changed and what stayed the same.
+- Before they import, suggest **Settings** ▸ **Import/Export Data** ▸ **Export Data** as a
+  backup, then import with **Replace**.
+- After the import, a new CSV report confirms the changes took (check the settings rows).
+
 ## 8. Things to avoid
 
 - Don't give financial advice (see the top of this file). Suggestions are fine when offered as
   what-ifs to compare in the app, with a note to consult a financial advisor for advice.
 - Don't invent numbers they didn't give. Use the stated defaults and say so.
-- Don't edit exported `.dat` files. They're encrypted; only the app reads them.
+- Don't edit exported `.dat` files. They're encrypted; only the app reads them. To see what's in
+  the app, use a CSV report (§7, "Changing a plan that's already in the app").
 - Don't Replace their plan without asking.
 - Don't claim a result you haven't read from the app (a screenshot, Plan Summary, a CSV report, or
   what the person tells you they see).
