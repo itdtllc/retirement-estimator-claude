@@ -26,10 +26,12 @@ The files in this skill:
   against them, and how to model them when that fits.
 - `reference/csv_report.md`: how a CSV report from the app is laid out, how to read it cheaply,
   and how to rebuild a plan from it.
+- `reference/spend_down.md` and `scripts/spend_down.py`: spending an account down by a target age,
+  and redoing it before every withdrawal.
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.3.2** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.4.0** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: tap their name or
 initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸
@@ -389,6 +391,11 @@ that ITDT offers it as an add-on skill at itdtllc.com/data/SocialSecurityClaimin
 same way as this skill. You can still do the what-if without it: their Social Security statement (my
 Social Security at ssa.gov) lists the monthly amount at each claiming age, so use the amounts they
 give you and change only the Social Security income's amount and `begin` date.
+
+**Spending an account down by a target age** ("How much can I spend so my IRA lasts until 90?"):
+follow `reference/spend_down.md`. It finds the spending with `scripts/spend_down.py`, covers the
+Monte Carlo odds and the risk of living past the target age, and explains why they redo it, with
+the new balance and date, before every withdrawal.
 
 ### Changing a plan that's already in the app
 

@@ -2,6 +2,14 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.4.0 (2026-10-03)
+
+- **Spend down by a target age.** Ask how much you can spend each month so an account lasts until
+  an age you choose, such as 90. Claude works out the monthly spending and this month's withdrawal,
+  builds the plan, and explains the Monte Carlo odds and what to weigh, such as living past
+  the age you chose. Before every withdrawal, give Claude the new
+  balance: it redoes the numbers so the plan stays on track to the age you chose.
+
 ## 1.3.2 (2026-10-03)
 
 - **Social Security claiming add-on.** When you ask when to start Social Security, Claude uses the
