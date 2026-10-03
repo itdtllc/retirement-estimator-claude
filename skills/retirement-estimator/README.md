@@ -1,6 +1,6 @@
 # Retirement Estimator for Claude
 
-**Version 1.3.1.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.3.2.** See `CHANGELOG.md` for what's new in each version.
 
 This skill teaches Claude how to set up your financial plan in **Retirement Estimator** (ITDT LLC):
 a retirement plan, a budget for your spending, or any other plan.
@@ -34,6 +34,11 @@ Then Claude helps you read the results and try "what if" questions.
 **Settings**, and under **Customize** tap **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸ **Replace** and
 choose the new zip. To check which version you
 have, ask Claude: "Tell me which version of the Retirement Estimator skill you have."
+
+**Add-ons:** separate skills that work alongside this one. They stay installed when you update
+this skill. **Social Security claiming** works out your benefit at any claiming age from 62 to 70 and
+adds the ages you choose to your plan to compare: itdtllc.com/data/SocialSecurityClaimingSkill.zip.
+Add it the same way as this skill.
 
 ## Claude Code: 2 steps
 

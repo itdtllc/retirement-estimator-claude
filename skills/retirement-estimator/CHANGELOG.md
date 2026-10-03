@@ -2,6 +2,12 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.3.2 (2026-10-03)
+
+- **Social Security claiming add-on.** When you ask when to start Social Security, Claude uses the
+  new Social Security claiming add-on if you have it. If you don't, Claude tells you where to get
+  it, and can still compare claiming ages using the amounts on your Social Security statement.
+
 ## 1.3.1 (2026-10-03)
 
 - Steps for adding and updating the skill now match Claude's current menus: tap your name or
