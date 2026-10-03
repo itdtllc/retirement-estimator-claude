@@ -2,6 +2,12 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.3.1 (2026-10-03)
+
+- Steps for adding and updating the skill now match Claude's current menus: tap your name or
+  initials ▸ **Settings**, then under **Customize** ▸ **Skills**. To update, tap
+  **retirement-estimator** ▸ **⋯** ▸ **Replace** and choose the new zip.
+
 ## 1.3.0 (2026-10-02)
 
 - **Changing a plan that's already in the app.** The app can't export a plan file, so Claude rebuilds
