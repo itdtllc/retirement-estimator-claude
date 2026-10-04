@@ -18,6 +18,7 @@ One short video for each feature added since:
 - [Claude Updates the Plan Already in Your App From a CSV Report](https://youtu.be/KUJyUo5w_NI) (skill 1.3.0)
 - [How to Update Your Retirement Estimator Skill in Claude](https://youtu.be/vjKRII5AgIg) (skill 1.3.1)
 - [Add Your Own Financial Rules to the Retirement Estimator Skill in Claude](https://youtu.be/hjXWXJOIa0U) (skill 1.3.2)
+- [Spend Down an IRA by 95 and Redo It Before Every Withdrawal](https://youtu.be/64rtvpiRiOk) (skill 1.4.0)
 
 ## What's in it
 
