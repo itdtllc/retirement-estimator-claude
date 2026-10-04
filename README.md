@@ -66,4 +66,5 @@ Claude passes them and read or write the plan file you're working on. They make 
 Claude and Retirement Estimator are estimation tools. Values Claude suggests are suggestions you can
 change. For financial or tax advice, consult a qualified professional.
 
-Privacy policy: https://itdtllc.com/privacy.html · Support: https://itdtllc.com
+Privacy policy: [PRIVACY.md](PRIVACY.md) (the Retirement Estimator app's own policy is at
+https://itdtllc.com/privacy.html) · Support: https://itdtllc.com/contact.html

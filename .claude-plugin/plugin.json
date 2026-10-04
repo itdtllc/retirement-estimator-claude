@@ -7,7 +7,7 @@
   "homepage": "https://itdtllc.com/retirement.html",
   "documentationUrl": "https://itdtllc.com/retirement-claude.html",
   "supportUrl": "https://itdtllc.com/contact.html",
-  "privacyPolicyUrl": "https://itdtllc.com/privacy.html",
+  "privacyPolicyUrl": "https://github.com/itdtllc/retirement-estimator-claude/blob/main/PRIVACY.md",
   "termsOfServiceUrl": "https://github.com/itdtllc/retirement-estimator-claude/blob/main/LICENSE",
   "repository": "https://github.com/itdtllc/retirement-estimator-claude",
   "keywords": ["retirement", "financial-planning", "budget", "social-security", "rmd", "monte-carlo"]
