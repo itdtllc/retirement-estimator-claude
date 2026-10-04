@@ -1,6 +1,6 @@
 # Retirement Estimator for Claude
 
-**Version 1.4.0.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.4.1.** See `CHANGELOG.md` for what's new in each version.
 
 This skill teaches Claude how to set up your financial plan in **Retirement Estimator** (ITDT LLC):
 a retirement plan, a budget for your spending, or any other plan.
@@ -9,7 +9,8 @@ Then Claude helps you read the results and try "what if" questions.
 
 ## What you need
 
-- **Retirement Estimator 1.7.0 or later** on your iPhone, iPad, or Mac (Apple silicon), from the App Store.
+- **Retirement Estimator 1.7.0 or later** on your iPhone, iPad, or Mac (Apple silicon), from the
+  [App Store](https://apps.apple.com/app/id1448396456).
 - The app's **Import/Export Data** in-app purchase, included in **Premium**. You don't need to buy it
   until the last step, when you import your plan.
 - A Claude plan that supports skills and includes **Opus**, which builds complex plans most reliably.

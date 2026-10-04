@@ -21,7 +21,8 @@ Ask one plain question at a time, skipping anything the plan or the conversation
 
 ## 2. Find the spending
 
-For one account paying the bills after other income, run the script. It mirrors how the app runs
+For one account paying the bills after other income, run the script: `scripts/spend_down.py`,
+relative to this skill's folder (in Claude Code and Cowork, `${CLAUDE_SKILL_DIR}/scripts/spend_down.py`). It mirrors how the app runs
 that plan month by month, and it matched the app's CSV report to within a dollar over 17 years.
 
 ```bash

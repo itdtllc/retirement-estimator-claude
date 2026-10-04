@@ -1,6 +1,6 @@
 # Social Security claiming add-on for the Retirement Estimator skill
 
-**Version 1.0.1.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.0.2.** See `CHANGELOG.md` for what's new in each version.
 
 An add-on skill for Claude that works alongside the **Retirement Estimator** skill. Tell Claude
 the monthly benefit at full retirement age from your Social Security statement (my Social Security
@@ -12,7 +12,8 @@ benefits aren't calculated.
 
 ## Add it to Claude
 
-You need the Retirement Estimator skill installed first (itdtllc.com/retirement-claude.html).
+You need the Retirement Estimator skill installed first (itdtllc.com/retirement-claude.html), and the
+Retirement Estimator app from the [App Store](https://apps.apple.com/app/id1448396456).
 
 1. Download **SocialSecurityClaimingSkill.zip**.
 2. In claude.ai or the Claude app, tap your name or initials ▸ **Settings**, then under

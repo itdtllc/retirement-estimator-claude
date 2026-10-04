@@ -3,6 +3,11 @@
 The newest version is first. This add-on works alongside the Retirement Estimator skill and has its
 own version number.
 
+## 1.0.2 (2026-10-03)
+
+- Included in the **retirement-estimator** plugin in Claude's plugin directory. Added from the
+  directory, updates arrive on their own.
+
 ## 1.0.1 (2026-10-03)
 
 - **Claiming months follow SSA's rules exactly.** Full retirement age and later claiming ages start
