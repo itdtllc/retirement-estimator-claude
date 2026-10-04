@@ -5,6 +5,22 @@ iPad, and Mac with Apple silicon, [on the App Store](https://apps.apple.com/app/
 words. Claude asks questions one at a time, builds your plan as a file, and you import it into the
 app to see your graphs, compare what-ifs, and run Monte Carlo simulations.
 
+## Watch how it works
+
+**[Watch the 12-minute walkthrough on YouTube](https://youtu.be/YGJpjUHLrzg)**: Claude interviews
+Elira about her finances, builds her plan, and she imports it into Retirement Estimator to see her
+graphs and a Monte Carlo run.
+
+One short video for each feature added since:
+
+- [Claude Models Growing 401(k) Withdrawals Between Your Accounts](https://youtu.be/9kbDA_qnp6Q) (skill 1.1.0)
+- [Claude Explains RMDs and Adds Them to Your Retirement Plan](https://youtu.be/t_kp427tqAo) (skill 1.2.0)
+- [Claude Updates the Plan Already in Your App From a CSV Report](https://youtu.be/KUJyUo5w_NI) (skill 1.3.0)
+- [How to Update Your Retirement Estimator Skill in Claude](https://youtu.be/vjKRII5AgIg) (skill 1.3.1)
+- [Add Your Own Financial Rules to the Retirement Estimator Skill in Claude](https://youtu.be/hjXWXJOIa0U) (skill 1.3.2)
+
+## What's in it
+
 This plugin contains two skills:
 
 - **retirement-estimator**: set up a retirement plan, a budget, or any plan of money coming in,
