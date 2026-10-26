@@ -9,7 +9,7 @@ You work out the person's own Social Security retirement benefit at each claimin
 to compare, then add those ages to their Retirement Estimator plan so they can see them side by
 side with **Compare Graphs**.
 
-This is **version 1.0.2** of this add-on to the Retirement Estimator skill. If the person asks which
+This is **version 1.1.0** of this add-on to the Retirement Estimator skill. If the person asks which
 version they have, tell them, with the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/SocialSecurityClaimingSkill.zip. To update in the Claude app or claude.ai: tap
 their name or initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸
@@ -33,7 +33,10 @@ given or already in the plan.
 
 1. **Monthly benefit at full retirement age** from their Social Security statement (my Social
    Security at ssa.gov shows it). It's in today's dollars and assumes they keep working until then.
-   Use it as given; don't adjust it for retiring earlier.
+   Use it as given; don't adjust it for retiring earlier. If they'll stop work well before full
+   retirement age, say in one line that the statement assumes they keep working, and that ssa.gov's
+   calculator shows how stopping earlier changes it. If they also give the statement's amounts at
+   other ages, use the script's figures, and mention any difference of more than a few dollars.
 2. **Birth date** (day, month and year). The day matters: someone born on the 1st or 2nd can start
    a month earlier, and January 1 birthdays fall under the previous year's rules.
 3. **Claiming ages to compare.** Any age from 62 to 70, in whole years or years and months (e.g.
@@ -118,11 +121,19 @@ What it does:
 Then check the output against the retirement-estimator rules (valid JSON, every transfer's `from`
 and `to` exist), and hand it over the way that skill says.
 
-**Limits:** three ages means three Social Security incomes and three scenarios, which goes over the
-free version's limits (2 incomes, 1 scenario). Say so plainly before they import: they'll need
-Unlimited Finance Entry (in Premium). If they'd rather stay within the free limits, make a separate
-plan file per age instead (each with one income and one scenario) and import them one at a time
-with **Compare**.
+**Couples:** the script works out one person at a time. Run `benefits` for each, then build the
+plan's incomes, transfers and scenarios yourself; don't use `plan` for a couple (a second run reuses
+its ids and names). Give each income a per-person id and name (e.g. `lee_ss67`, "Lee Social Security
+at 67"), its transfers in the same place as the old Social Security's, and one scenario
+per **pair** they want to compare, with `exclude` switching off every other Social Security income.
+Don't make every combination (three ages each is nine scenarios); ask which pairs, suggesting both
+at full retirement age and both at 70. Spousal and survivor benefits stay out of scope (above).
+
+**While building a new plan:** if the ages come up during the retirement-estimator interview, give
+the benefits table, carry on with the interview, and build the chosen ages into the first plan file.
+
+**Purchase:** several ages means several incomes and scenarios. Premium, which the
+retirement-estimator skill's plans need anyway, covers them; say so in a line if they don't have it.
 
 **Import:** a new file name, imported with **Compare**, keeps their current plan. Then:
 Estimator tab ▸ **Compare Graphs**, and pick two of the new scenarios. As always, read results

@@ -3,6 +3,13 @@
 The newest version is first. This add-on works alongside the Retirement Estimator skill and has its
 own version number.
 
+## 1.1.0 (2026-10-26)
+
+- **Couples:** compare claiming ages for both of you, one scenario per pair of ages you choose.
+- Statement amounts at other ages that don't match SSA's rules are pointed out, and stopping work
+  early is explained in a line.
+- Premium is assumed, as in the Retirement Estimator skill; no separate plan per age to fit the free limits.
+
 ## 1.0.2 (2026-10-03)
 
 - Included in the **retirement-estimator** plugin in Claude's plugin directory. Added from the

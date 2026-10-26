@@ -29,6 +29,8 @@ Text such as `"month"`, `"monthly"`, `"year"`, `"quarter"`, `"week"`, `"day"`, `
 
 - Format is `"YYYY-MM-DD"` (or `"YYYY-MM"`, which means the 1st).
 - Leave a date out to use the scenario's begin or end date.
+- An `end` date is included: a payment or bill due on it is made (checked in the app). To stop
+  before a due date, end the day before it.
 - Start things on the **1st of a month** unless there's a reason not to (see the Transfers rules).
 
 ## Income
@@ -103,7 +105,8 @@ How the app applies a transfer (HowToUse.html §2.5, §2.7, §3.7):
   conflict and the priority order isn't applied. The import stops with an error if not. The usual
   fix is to put a yearly bill on a monthly schedule (divide by 12).
 - A percent transfer from an income or expense pays evenly only when it runs on that source's own
-  schedule. The import warns otherwise.
+  schedule. The app's checker notes this as a warning (listed by the Import Plan shortcut, not by
+  the app's import).
 
 ## Scenarios (Estimator Configurations)
 
@@ -114,10 +117,53 @@ How the app applies a transfer (HowToUse.html §2.5, §2.7, §3.7):
 | `reportBy` | | `day`/`week`/`month`/`quarter`/`year`. Default is the most frequent transfer schedule |
 | `exclude` | | Item ids switched off in this scenario (their transfers switch off too). Use for "what if I didn't have X" |
 
+At least one scenario is required, also in a file meant for Merge: the app rejects a plan without one
+("at least one scenario is required"), and Merge adds it as another scenario. To add an item to a plan
+already in the app, see "Update files" below.
+
+## Update files (Update Balances)
+
+An update file brings a plan that's already in the app forward to a date, with new balances, through the
+app's **Update Balances** screen. It's a `.financialplan` with **only** an `update` block (plus
+`planFormat`, and optionally `planName` and `notes`); a file with items and an `update` block is an error.
+Opening it imports nothing: the app opens Update Balances with the date and these values filled in, and
+the person checks them and taps **Review** ▸ **Apply** (or **Cancel**). Needs app 1.8.0 or later and the
+**Import/Export** purchase.
+
+```json
+{
+  "planName": "Update 2026-10-14",
+  "planFormat": 1,
+  "update": {
+    "asOf": "2026-10-14",                 // the date to move the plan to
+    "useValuesFrom": "Retire at 67",      // optional: the scenario the screen's values come from
+    "balances": {"IRA": 412300.55, "Savings": 18250.40},
+    "amounts": {"Social Security": 2884}
+  }
+}
+```
+
+| Field | Meaning |
+|---|---|
+| `asOf` | Required. The date the plan moves to (`YYYY-MM-DD`) |
+| `balances` | Investment name → balance **at the start of** `asOf`: the closing balance of a statement ending the day before |
+| `amounts` | Income or expense name → its payment or cost from its new begin date (only the ones that changed) |
+| `useValuesFrom` | Optional scenario name, for **Use values from** when the scenarios project different values |
+
+- **Names** are matched as shown in the app (case and surrounding spaces don't matter). The screen lists
+  every name it can't match: not in the plan, under the wrong heading, used by two items, or not part of
+  this update (it starts later or has ended). Get the exact names from a CSV report or the plan file.
+- Give at least one of `balances` or `amounts`. Everything you leave out is filled in by the app from the
+  plan, as on the screen.
+- Amounts are 0 or more. Unknown fields are errors, as in a plan.
+- An update file can't add an item. A new account, income or bill is entered in the app (SKILL.md, after
+  "an update file"), or the plan is rebuilt and imported with Replace.
+
 ## Limits
 
 - **Free version:** 2 income, 2 investments, 3 expenses, 5 transfers, 1 scenario. Above any of
-  these, importing needs **Unlimited Entry**, which is included in **Premium**.
+  these, importing needs **Unlimited Finance Entry**, which is included in **Premium**. Plans built
+  with this skill assume Premium (SKILL.md §1); don't trim a plan to fit these limits.
 - **Size:** at most 500 items of each kind; names up to 100 characters.
 - **Importing at all** needs the **Import/Export** purchase (also in Premium).
 

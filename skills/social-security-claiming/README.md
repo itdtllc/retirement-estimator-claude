@@ -1,6 +1,6 @@
 # Social Security claiming add-on for the Retirement Estimator skill
 
-**Version 1.0.2.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.1.0.** See `CHANGELOG.md` for what's new in each version.
 
 An add-on skill for Claude that works alongside the **Retirement Estimator** skill. Tell Claude
 the monthly benefit at full retirement age from your Social Security statement (my Social Security

@@ -39,6 +39,15 @@ guess, build the plan, and have them import it with **Compare**. Read the accoun
 (tap the end of its line, or a CSV report) and adjust: spending up if money is left, down if it
 runs out early. The app is the authority, not the script.
 
+**Not retired yet, or a full plan** (pay until retirement, several accounts, gaps before Social
+Security): the script can't model it. Read the question as extra spending on top of the plan, from
+retirement on. From a CSV report of their scenario, take the account's balance at the target month,
+B. Work out what $1 a month of extra spending, rising with inflation, withdrawn from the account
+from retirement to the target month (grossed up by its withdrawal tax), would have grown to by then
+at the account's return, F. The extra is about B ÷ F a month. Add it as one expense, "Extra
+Spending", paid in the same order as the other bills, and check it with a Compare import as above.
+Checked in the app (2026-10-14): the account was within $15 of $0 at the target month.
+
 ## 3. Build the plan
 
 - Every item and the scenario **begin on the same date**: the month of the next withdrawal. An
@@ -77,7 +86,8 @@ Say these briefly, as facts to weigh, not advice:
 
 - **Living past the target age is the main risk.** The target is a choice, not a forecast. In the
   2022 US life table, a woman of 72 has about a 1 in 3 chance of reaching 90 and about 1 in 7 of
-  reaching 95 (figures for people alive today run somewhat higher). After the target only lifetime
+  reaching 95 (figures for people alive today run somewhat higher). For other ages, look the odds up
+  in SSA's current period life table rather than from memory, or say it in general terms. After the target only lifetime
   income is left, which is why Social Security or a pension matters. Offer a later age (e.g. 95),
   a reserve (`--target`), or moving the target later as they get older.
 - **Spending moves with the market.** The account can't run dry before the target if they update
@@ -103,9 +113,11 @@ however often they withdraw):
    balance, a new file name, and import it with **Replace** (ask first) so the graph shows the new
    path to the target.
 
-If they'd rather edit the app directly, both changes are needed: the account's balance **and** its
-begin date (and the scenario's begin date) set to today. A new balance with an old begin date makes
-the app grow it from the old date.
+If they'd rather do it in the app: with app 1.8.0 or later, Money ▸ **Update Balances** does both
+changes in one pass. They pick the withdrawal date, enter the new balance, and change the spending
+expense's amount to the new monthly spending. Otherwise both changes are needed by hand: the
+account's balance **and** its begin date (and the scenario's begin date) set to today. A new balance
+with an old begin date makes the app grow it from the old date.
 
 ## 8. Things to avoid
 

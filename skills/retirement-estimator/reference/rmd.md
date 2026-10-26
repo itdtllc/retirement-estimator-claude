@@ -20,12 +20,11 @@ When a plan has a pre-tax account and runs past the starting age, explain what a
 whether they'd like an estimate included (SKILL.md §2, retirement question 10). If they say no,
 leave RMDs out of the plan and skip the check. If yes:
 
-- **Nothing else draws from the account:** model the RMDs as transfers (below). If they don't
-  have Unlimited Entry, say it's needed for this, and offer the check instead.
-- **The account's only withdrawal moves money into savings** (e.g. 401(k) → a measuring expense →
-  Savings, SKILL.md "route it through an expense"), and bills are paid from savings: the RMD
-  transfers can replace that withdrawal ("Replacing a withdrawal", below).
-- **The account pays bills:** do the check below after the import.
+- **Nothing else draws from the account:** model the RMDs as transfers (below).
+- **The account already pays an expense**, a bill or a measuring expense that makes a withdrawal
+  grow (e.g. 401(k) → "401(k) Draw" → Savings, SKILL.md "route it through an expense"): send the
+  RMDs through a holding account ("When the account already pays an expense", below). Each year the
+  account then pays the larger of the RMD and what it already pays, never both.
 
 ## Check the plan against the RMDs
 
@@ -40,14 +39,19 @@ After the import (SKILL.md §6):
 2. RMD for each year = start balance ÷ factor.
 3. List the years where the withdrawals are below the RMD, with both numbers. Withdrawals at or
    above the RMD are fine; the RMD is a minimum, not an extra withdrawal.
-4. If there are short years, offer a what-if (SKILL.md §7). Usually: move the pre-tax account
-   earlier in the drawdown order, or model the RMDs (below) when the account pays no bills.
+4. If there are short years, offer a what-if (SKILL.md §7). Usually: add the RMDs through a holding
+   account (below), or move the pre-tax account earlier in the drawdown order. An
+   account last in the order that is barely drawn can be taken out of the order for the what-if
+   (remove its bill transfers) and given RMD transfers into Savings instead. Then SKILL.md §3's "An
+   account that never pays bills" applies: say so, since Monte Carlo counts a run as failed if the
+   other accounts run out.
 
 ## Optional: model the RMDs as transfers
 
-Only when **no other transfer takes money out of that account** (it isn't paying bills). Otherwise
-the app takes the RMD on top of the other withdrawals, which overstates them; use the check above
-instead. Needs **Unlimited Entry** (one transfer per year of age: 28 from age 73 to 100).
+When **no other transfer takes money out of that account**, the RMD transfers go straight to where
+the money goes. When the account already pays an expense, they go to a holding account instead
+(next section); sent straight to savings, the app would take them on top of the other withdrawals.
+It takes one transfer per year of age (28 from age 73 to 100).
 
 - The account: `"compound": "month"`.
 - One transfer per age, from the account to where the money goes (usually taxable Savings):
@@ -56,7 +60,7 @@ instead. Needs **Unlimited Entry** (one transfer per year of age: 28 from age 73
   `returnPercentPerYear`; for another return, use the formula below).
 - Name them "RMD 73", "RMD 74", and so on, and keep them in age order.
 - End the scenario on December 31 of the year they turn 100 (not their birthday), so the last
-  RMD year is complete.
+  RMD year is complete. For a couple, that's the account owner's 100th year.
 - Tax: `"taxPercent"` with `"taxMode": "subtract"`. The account gives up exactly the RMD and the
   destination gets the RMD minus the tax.
 - Checked in the app (2026-10-01, 7% column): the yearly total matched the true RMD within 0.01% at
@@ -68,22 +72,57 @@ The monthly percent `p` makes 12 monthly withdrawals add up to balance ÷ factor
 Solve for `p` numerically (e.g. by bisection) and give it to 4 decimal places as a percent.
 Dividing 1 by (12 × factor) is not close enough: it under-withdraws by up to 4% at older ages.
 
-## Replacing a withdrawal
+## When the account already pays an expense
 
-When the account already makes a regular withdrawal into savings and the person wants RMDs in the
-plan, adding RMD transfers on top would take both. Instead:
+RMD transfers added next to the account's own transfers would take both. Send them through a
+holding account that pays the same expenses first:
 
-1. End the old withdrawal (the transfers into and out of its measuring expense, and the expense
-   itself) on December 31 of the year before the first RMD year.
-2. Add the RMD transfers (below) from January 1 of the first RMD year, into the same savings
-   account, at the **top** of the priority list (the old withdrawal's place). Bill transfers from
-   savings stay after them, so each month's RMD has arrived before bills are paid.
-3. Only one withdrawal comes out of the account at a time, so nothing is taken twice.
+1. **Add an investment for RMD money**, e.g. "RMD Brokerage": `balance` 0, no begin date. RMD money
+   that isn't spent stays there. Set it up from what the plan already shows, rather than asking:
+   - **Return, compounding and tax on growth:** copy the account where the plan already puts money
+     taken from the pre-tax account; RMD money not spent would land there too. E.g. 401(k) →
+     "401(k) Draw" → Savings: copy Savings. If the account pays bills directly, copy the plan's
+     taxable savings or investment account. Only if there's none, use the pre-tax account's return
+     with the RMD's tax rate on growth.
+   - **Dates and naming:** like the plan's other accounts (usually no dates, so it follows each
+     scenario), and include it in every scenario that has the RMDs.
+   - **An existing taxable account that pays nothing** (e.g. a brokerage only growing) can be the
+     holding account instead of a new one.
+   State these in one line ("RMD money you don't need goes to a new RMD Brokerage that earns 2% with
+   15% tax on its growth, like your savings") and change them if asked.
+2. **The RMD transfers** (above) go from the pre-tax account into it, at the top of the priority list.
+3. **For each expense the pre-tax account pays** (a bill, or a measuring expense, `csv_report.md`
+   "Spotting a measuring expense"), add a transfer from the holding account to that expense:
+   `percent` 100, no tax (the RMD was taxed when it left the account), placed **right before** the
+   pre-tax account's own transfer to that expense.
+4. **Bills paid by accounts that can run dry** (e.g. only Savings pays them): add a transfer from the
+   holding account to each, `percent` 100, after the bill's other transfers. Otherwise its money sits
+   unused while a bill goes unpaid, and Monte Carlo counts a failure (SKILL.md §3, "An account that
+   never pays bills").
+5. **Change nothing else.** The account's own transfers, a measuring expense and its tax top-up keep
+   their dates, percents, tax and order. Don't end them.
 
-This is exact when the RMD is at least what the old withdrawal would have taken; the RMD is a
-minimum. After the import, check it with a CSV report: compare the first RMD year's total with the
-old withdrawal's last full year. If the RMD is smaller in some years, the person would withdraw
-more than the minimum then; keep the old withdrawal running for those years instead.
+A transfer into an expense never pays more than the expense still owes. So the RMD money pays first,
+and the account's own transfer pays only what's left: each year the account pays the larger of the
+RMD and its usual amount. A larger RMD leaves the rest in the holding account; a smaller one is
+topped up by the account as before. Checked in the app (2026-10-20), for a growing withdrawal and a
+bill paid directly. Two details:
+
+- In a year the RMD is smaller, it counts toward the expense after its tax, so the account pays its
+  usual amount plus the tax on the RMD part (at 12%, about $12,000 more on a $100,000 RMD).
+- When the holding account pays a measuring expense, savings receives the full amount instead of the
+  amount after tax; the tax was paid on the RMD.
+
+Tell the person in plain words, without asking them to pick a method: "Each year your 401(k) pays
+whichever is larger: your RMD or your usual withdrawal. RMD money you don't need is kept in a new
+account, RMD Brokerage." Before writing the file, give the first RMD year's estimate next to the
+usual amount that year (grown by its yearly increase). The app's transfer form will show "Percent
+transfers from "401(k)" total …%"; that's expected: it adds up every RMD percent and the 100% to the
+expense, but only one RMD runs each year and a transfer to an expense never pays more than it owes.
+
+After the import, check it with a CSV report: from the first RMD year, the account's yearly total out
+(the RMD plus its own transfers, amounts including tax) is the larger of the two, and nothing is
+unpaid.
 
 **Two owners, one account item:** if a couple's pre-tax accounts are one investment item and they
 ask to treat it as one person's, use that person's birth year. It's exact if one person owns it

@@ -29,7 +29,7 @@ Transfer Amount To Expense >,,$4,000.00,...
 Percentage Of Investment Amount >,,0.52%,...
 
 INCOME
-Income Name,Begin Date, EndDate,Payment,Payment Schedule,Payment Schedule Type,Percentage Increase,Percentage Increase Schedule,Percentage Increase Schedule Type,Fixed Increase,Fixed Increase Schedule,Fixed Increase Schedule Type,Income Payment Tax
+Income Name,Begin Date,End Date,Payment,Payment Schedule,Payment Schedule Type,Percentage Increase,Percentage Increase Schedule,Percentage Increase Schedule Type,Fixed Increase,Fixed Increase Schedule,Fixed Increase Schedule Type,Income Payment Tax
 "Pension","06/01/2029","12/01/2060","$1,850.00","1",Monthly,"1.50%","1",Yearly,"","","","15.00%"
 Income Report Date >,...
 Income Payment >,...
@@ -99,6 +99,39 @@ copying them can change a plan that used finer ones. Recompute RMD transfer perc
 percent that was rounded.
 
 Keep each item's name exactly as it appears, so the rebuilt plan looks the same in the app.
+
+**Items with no date.** An item whose Begin Date or End Date is empty in the app follows the scenario,
+and the report shows the scenario's date for it. Reports from app 1.8.0 on say so in that item's own
+header row: `Transfer Name,Begin Date (Scenario Begin),End Date (Scenario End),...`; the date cell
+stays a plain date. A plain `Begin Date` / `End Date` header means the date was set on the item.
+Older reports have no label (and their Income header reads ` EndDate`), so there a date equal to the
+scenario's begin or end usually means no date. In the rebuilt plan, **leave out every date under a
+labeled header, and in an older report every `begin` equal to the scenario's begin and every `end`
+equal to its end**; the item then follows the scenario, as it
+did in the app. Copy the other dates (e.g. a pension starting in 2032). Never give an undated item a date: a
+transfer dated to the scenario's begin looks like it starts years before the income it carries, and
+when the plan is moved forward (Update Balances, or a new start date) it moves with the date instead of
+following the scenario.
+
+## Spotting a measuring expense
+
+An expense that is the **From** of a transfer into an investment is a **measuring expense**, not a
+cost (SKILL.md §3, "route it through an expense"). People build these to make a withdrawal grow
+each year, since transfers can't grow. It can have any name, e.g. "IRA Draw" or "Retirement
+Income". In a rebuild:
+
+- **Rebuild every transfer into and out of it exactly**, with the same percents, tax, tax mode and
+  priority order. Don't replace the chain with a direct transfer between the accounts; that drops
+  the growth.
+- **Describe it as the chain it is:** "IRA → IRA Draw ($5,000/month, +2%/yr) → Savings". Don't call
+  it a bill, and don't count it as spending when you explain results.
+- **A tax top-up is part of it.** With `taxMode: "subtract"` on the transfer into the expense, the
+  expense receives less than it costs, and a second transfer (often from Savings) pays the rest.
+  Example (invented): a $5,000 expense, IRA → expense 100% with 15% subtracted ($5,000 leaves the
+  IRA, $4,250 arrives), then Savings → expense 100% ($750), then expense → Savings 100% ($5,000).
+  Savings gains $4,250 net. Keep the top-up transfer and its place in the order: without it the
+  expense is short every period, shows as unpaid, and Monte Carlo counts a failure. Don't switch
+  the tax mode to `"add"` either; that changes what leaves the account.
 
 **Not in the report, so ask or keep:**
 - **Transfer priority.** Transfers are listed in priority order, highest first (confirmed by an

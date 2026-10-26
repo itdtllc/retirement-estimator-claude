@@ -28,10 +28,11 @@ The files in this skill:
   and how to rebuild a plan from it.
 - `reference/spend_down.md` and `scripts/spend_down.py`: spending an account down by a target age,
   and redoing it before every withdrawal.
+- `reference/recipes.md`: tested patterns for pay, contributions, accounts, and costs that start later.
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.4.1** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.5.0** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: tap their name or
 initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸
@@ -55,10 +56,9 @@ Say briefly, in plain words:
    built and the app has checked it. (Owning it already, or buying it earlier, is fine too.) When
    they open the plan file, the app checks the whole plan first and lists any problems for free;
    the purchase is asked for only once the plan is ready to import.
-2. The purchase needed is **Import/Export Data**. Most real plans also go over the free version's
-   limits (2 incomes, 2 investments, 3 expenses, 5 transfers, 1 scenario), which needs Unlimited
-   Finance Entry. **Premium** includes both, plus CSV Reports. If they'd rather not buy Unlimited
-   Finance Entry, you'll keep the plan within the free limits and tell them what you had to simplify.
+2. The purchase needed is **Premium**. It includes Import/Export Data, which importing needs, and
+   Unlimited Finance Entry, since real plans go over the free version's limits; plus CSV Reports.
+   Build the plan the way it should be built; don't simplify it to fit the free limits.
 3. You work on their behalf. What they tell you, and the plan you create, are stored by Anthropic
    under their Claude account. Once imported, the plan is saved by the app on their device. ITDT LLC
    receives none of it.
@@ -70,8 +70,8 @@ If they have already said what they want, in their first message or instead of a
 again. Go with what they said, and handle anything they type in their own words. If it's unclear,
 make a sensible guess, say it in one line, and carry on.
 
-You'll need to know which device they use Retirement Estimator on (Mac, iPhone or iPad) for §5. Ask
-that later, when the plan is ready, not at the start.
+You'll need to know which device they use Retirement Estimator on (Mac, iPhone or iPad) for §5. Unless
+they've said, ask that later, when the plan is ready, not at the start.
 
 ## 2. The interview
 
@@ -138,11 +138,9 @@ matters.
     their account's name, their starting age, and the percent for that age (1 ÷ its factor: about
     4.1% at 75).
     - **No:** leave RMDs out and don't check them.
-    - **Yes, and the account pays no bills:** RMDs are modeled as transfers, which needs Unlimited
-      Finance Entry. If you don't know whether they have it, ask (one question). Without it, offer
-      the check after the import instead.
-    - **Yes, and the account pays bills:** tell them you'll check after the import that the
-      planned withdrawals reach each year's RMD.
+    - **Yes, and nothing else draws from the account:** RMDs are modeled as transfers.
+    - **Yes, and the account already pays bills or a withdrawal:** the RMDs go through a holding
+      account, so each year the account pays the larger of the two (`reference/rmd.md`).
 11. A spouse or partner? Then ask their income and accounts the same way.
 
 **Default assumptions.** State each one when you use it, and change it if the person asks:
@@ -221,13 +219,15 @@ come out right. They come from the app's help (§ numbers refer to `HowToUse.htm
   - **Tax with `taxMode: "add"` is grossed up:** 22% on a $30,000 draw takes $38,461.54 from the
     401(k) ($30,000 ÷ 0.78); the $8,461.54 tax is 22% of the full withdrawal.
 - **RMDs** (`reference/rmd.md`), only if they asked for an estimate (interview question 10). If
-  nothing else draws from the pre-tax account, model the RMDs as transfers. If the account's only
-  withdrawal moves money into savings (not straight into bills), the RMD transfers can *replace*
-  that withdrawal from the first RMD year (`reference/rmd.md`, "Replacing a withdrawal"). If the
-  account pays bills, don't model them (the app would take them on top); tell the person you'll
-  check after the import that the planned withdrawals reach each year's RMD.
+  nothing else draws from the pre-tax account, model the RMDs as transfers. If it already pays an
+  expense (bills, or a measuring expense), send the RMDs to a new holding account that pays those
+  expenses first (`reference/rmd.md`, "When the account already pays an expense"), so each year it
+  pays the larger of the RMD and its usual amount. Never end or change its existing transfers.
 - **Two people:** give each person their own income items, and give each person's accounts their own
   investment items.
+- **Recipes** (`reference/recipes.md`): what a paycheck percent is of, why the leftover transfer
+  stays at 100%, employer match, pay every two weeks, keeping a minimum in
+  savings, fewer transfers, costs that start later, and when a couple's plan ends.
 - **No field for it? Combine items.** Never tell the person the app can't handle something just
   because no field names it. Roth vs. traditional, drawdown order, one-time purchases and pensions
   are all built from items, transfers, dates and priorities. Check the help for how the pieces behave.
@@ -313,10 +313,10 @@ each step. Use the app's exact names (help §2–§3):
    - **Monte Carlo Simulation** (same scenario page): the chance the plan works when returns and
      inflation vary (§3.5).
    - **Compare Graphs** (same page): two scenarios on one graph, for what-ifs (§7).
-5. **RMD check:** if they asked for an RMD estimate and the pre-tax account pays bills, check that
-   each year's withdrawals reach the RMD (`reference/rmd.md`). It needs the account's yearly
-   balances: a CSV report gives exact numbers, and Plan Summary or the graph gives an estimate.
-   Tell them which years fall short, if any, and offer a what-if.
+5. **RMD check:** if the plan has RMDs through a holding account, check with a CSV report that each
+   year the account pays the larger of the RMD and its usual amount and nothing is unpaid. For a
+   plan without modeled RMDs, check that each year's withdrawals reach the RMD (`reference/rmd.md`;
+   Plan Summary or the graph gives an estimate). Tell them which years fall short and offer a what-if.
 
 The results come from the app's own calculations. You can't work them out yourself, so always read
 them from the app: a screenshot, the Plan Summary text, a CSV report, or what they tell you.
@@ -337,7 +337,8 @@ much more than for a graph. Keep both down:
 Rough file size: rows = periods in the scenario (a monthly scenario over 45 years
 is about 540 rows), times the number of items. Offer the smaller option first: a scenario that
 reports by year cuts the rows by 12 (the report follows the scenario's schedule). If they'd rather
-save their usage, the graph screenshot is enough for most questions.
+save their usage, the graph screenshot is enough for most questions. If they send a CSV before
+you've said this, give the usage note in a line and ask what to check before reading it.
 
 If they want it:
 
@@ -400,6 +401,53 @@ the new balance and date, before every withdrawal.
 
 ### Changing a plan that's already in the app
 
+**Only new balances and a new date?** If the Money tab has an **Update Balances** button (app 1.8.0 or
+later), they don't need a new plan file. Money ▸ **Update Balances**: pick the date (today at first; a
+later date uses estimates), enter each investment's balance at the start of that date, check the income
+and expense amounts, then **Review** ▸ **Apply**. If their scenarios give different values, the
+highlighted ones come from the scenario picked under **Use values from**. Everything that started
+before that date moves to it, keeping payment days. An expense waits for a payer the update moves later
+(an investment's next compounding date) only when its other payers can't cover the bills until then; its
+row then says which bills aren't in the plan. Items with no begin date follow the scenario, so an undated
+yearly bill comes due on the scenario's new start and then every year on that day; the row says when.
+When you write a plan file and know a yearly or longer bill's due date, give it a begin date so it keeps
+its day. Not carried forward, and named on the rows and Review: a bill's unpaid total on that date (if
+they still owe it, add it as its own expense) and pay an income received but hadn't passed on yet (if
+they still have it, add it to an account's balance). **Undo** on the confirmation puts it back. A
+scenario with transfer conflicts is listed in red and blocks the update (a Configuration date advisory
+alone doesn't): tap it to open its conflicts and use **Auto-Fix All** (or fix each one). Scenarios can
+share transfers, so the Auto-Fix summary also names any other scenario the changes gave conflicts;
+they can **Undo**, or keep the changes and fix that scenario next. Update Balances only moves a plan
+forward; to start a plan earlier, they edit its Begin Dates (or you build a new plan file).
+
+**You can fill Update Balances in for them: an update file.** Ask the date and each account's balance at
+the start of it (the statement closing the day before), and any income or expense amount that changed;
+write `Update <date>.financialplan` with only an `update` block (`reference/plan_format.md`, "Update
+files"). The date may be a recent one before today, such as the day after a statement closes. They open
+it the same way as a plan file (§5's download steps), but nothing is imported and no Replace/Merge/Compare
+question appears: Update Balances opens with the values filled in, each marked as from the update file.
+They check them and tap **Review** ▸ **Apply**. It needs Import/Export. Each row shows the item's current
+amount, and for an item with a Begin Date what the plan projects on that date; an item with no Begin Date
+isn't projected, so don't promise a projection for it. A balance for items the plan combines or splits
+(e.g. Savings and an Emergency Fund, `reference/recipes.md`) is split or combined the same way. Copies
+brought in with Compare have names ending in "Compare" (then "Compare 2" and so on); the screen fills
+them from their own projections. Include them by those exact names (from a CSV report) only if the
+person wants those what-ifs updated too. Set `useValuesFrom` to the scenario they treat as their plan. Use the item names exactly as in the app: a CSV
+report has them all (`reference/csv_report.md`), and it also shows what the plan projects for each
+account then, so you can point out a balance far from the plan before they apply it (offer the CSV
+check as above, with its usage note; don't require it).
+
+**A new account, income or bill can't go in an update file** (the screen lists its name as not in the
+plan), and a Merge file is no way round it: it must have its own scenario, which becomes a second
+scenario in the app, and its transfers can't reach items already there. For one or two new items, give
+the person every value to enter in the app (Money ▸ Investments, Income or Expenses, then Transfers and
+**Set Transfer Priority**), after they apply the update. Ask a new account's balance on the update's
+date. Give it a Begin Date only if the plan's items have them (then the update's date); in an undated
+plan leave it (and its transfers') empty, so it starts with the scenario. The form's percentage is **per its schedule
+period**, not per year: 6% a year compounded monthly is 0.4868 with **1 Months** ((1.06)^(1/12) − 1).
+A new item is enabled in every scenario automatically. For bigger changes, rebuild the plan with the new
+balances (`reference/plan_format.md`) and have them import it with Replace.
+
 When the person wants you to change a plan they've already entered or imported, skip the interview.
 You need what's in the app now:
 
@@ -415,9 +463,13 @@ of those works.
 
 Then:
 - Rebuild the plan with the same item names, settings and transfer order, and make only the
-  changes they ask for. When they ask to move old start dates forward, shift items that started at
+  changes they ask for. From a CSV, leave out dates under a "(Scenario Begin)"/"(Scenario End)" header, or in
+  an older report dates equal to the scenario's (items with no date; `reference/csv_report.md`). When they ask to move old start dates forward, shift items that started at
   the scenario's begin to the new date, and keep any gaps between start dates (e.g. bills that
   start one month after the accounts) unless they say otherwise; say so in one line.
+- **Measuring expenses:** an expense that transfers into an investment measures out a withdrawal
+  (`reference/csv_report.md`, "Spotting a measuring expense"). Keep its whole chain, including a tax
+  top-up from savings, and in summaries name it and what it does, never as a bill.
 - Summarize what changed and what stayed the same.
 - Before they import, suggest **Settings** ▸ **Import/Export Data** ▸ **Export Data** as a
   backup, then import with **Replace**.
