@@ -2,6 +2,12 @@
 
 The newest version is first. The skill's version is separate from the app's version.
 
+## 1.5.1 (2026-10-26)
+
+- Steps for updating the skill now match Claude's current menus: under **Customize** ▸ **Skills**,
+  tap **+ Add** ▸ **Upload skill**, choose the new zip, and tap **Upload and replace**. Your earlier
+  version stays in the skill's version history.
+
 ## 1.5.0 (2026-10-26)
 
 - **Update Balances.** When only balances and dates change, Claude points you to the app's new

@@ -1,6 +1,6 @@
 # Retirement Estimator for Claude
 
-**Version 1.5.0.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.5.1.** See `CHANGELOG.md` for what's new in each version.
 
 This skill teaches Claude how to set up your financial plan in **Retirement Estimator** (ITDT LLC):
 a retirement plan, a budget for your spending, or any other plan.
@@ -32,8 +32,8 @@ Then Claude helps you read the results and try "what if" questions.
    Retirement Estimator opens, checks the plan, and imports it. Then you'll see your graphs.
 
 **Updating to a newer version:** download the new zip, then in Claude tap your name or initials ▸
-**Settings**, and under **Customize** tap **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸ **Replace** and
-choose the new zip. To check which version you
+**Settings**, and under **Customize** tap **Skills** ▸ **+ Add** ▸ **Upload skill**, pick the new zip,
+and tap **Upload and replace** when asked. To check which version you
 have, ask Claude: "Tell me which version of the Retirement Estimator skill you have."
 
 **Add-ons:** separate skills that work alongside this one. They stay installed when you update

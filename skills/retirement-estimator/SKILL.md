@@ -32,11 +32,12 @@ The files in this skill:
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.5.0** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.5.1** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: tap their name or
-initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸ **retirement-estimator** ▸ **⋯** ▸
-**Replace**, and choose the new zip (the skill keeps its name). In Claude Code: ask Claude Code to
+initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸ **+ Add** ▸ **Upload skill**, choose
+the new zip, and tap **Upload and replace** when asked (the skill keeps its name, and the earlier
+version stays in its version history). In Claude Code: ask Claude Code to
 update the skill from the same link. If they added it from Claude's plugin directory (the
 **retirement-estimator** plugin by ITDT LLC), updates arrive on their own.
 

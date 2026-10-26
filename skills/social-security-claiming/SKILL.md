@@ -9,11 +9,11 @@ You work out the person's own Social Security retirement benefit at each claimin
 to compare, then add those ages to their Retirement Estimator plan so they can see them side by
 side with **Compare Graphs**.
 
-This is **version 1.1.0** of this add-on to the Retirement Estimator skill. If the person asks which
+This is **version 1.1.1** of this add-on to the Retirement Estimator skill. If the person asks which
 version they have, tell them, with the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/SocialSecurityClaimingSkill.zip. To update in the Claude app or claude.ai: tap
 their name or initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸
-**social-security-claiming** ▸ **⋯** ▸ **Replace**, and choose the new zip. If they added it from
+**+ Add** ▸ **Upload skill**, choose the new zip, and tap **Upload and replace** when asked. If they added it from
 Claude's plugin directory (the **retirement-estimator** plugin by ITDT LLC), updates arrive on their own.
 
 This skill handles the Social Security arithmetic and nothing else. The **retirement-estimator**

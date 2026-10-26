@@ -1,6 +1,6 @@
 # Social Security claiming add-on for the Retirement Estimator skill
 
-**Version 1.1.0.** See `CHANGELOG.md` for what's new in each version.
+**Version 1.1.1.** See `CHANGELOG.md` for what's new in each version.
 
 An add-on skill for Claude that works alongside the **Retirement Estimator** skill. Tell Claude
 the monthly benefit at full retirement age from your Social Security statement (my Social Security
@@ -22,7 +22,7 @@ Retirement Estimator app from the [App Store](https://apps.apple.com/app/id14483
    I was born June 15, 1965. Compare starting at 62, 67 and 70 in my plan." Attach your plan file.
 
 **Updating to a newer version:** download the new zip, then under **Customize** ▸ **Skills** tap
-**social-security-claiming** ▸ **⋯** ▸ **Replace** and choose the new zip.
+**+ Add** ▸ **Upload skill**, pick the new zip, and tap **Upload and replace** when asked.
 
 Because it's a separate skill, updating the Retirement Estimator skill never removes it.
 

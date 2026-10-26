@@ -3,6 +3,12 @@
 The newest version is first. This add-on works alongside the Retirement Estimator skill and has its
 own version number.
 
+## 1.1.1 (2026-10-26)
+
+- Steps for updating the skill now match Claude's current menus: under **Customize** ▸ **Skills**,
+  tap **+ Add** ▸ **Upload skill**, choose the new zip, and tap **Upload and replace**. Your earlier
+  version stays in the skill's version history.
+
 ## 1.1.0 (2026-10-26)
 
 - **Couples:** compare claiming ages for both of you, one scenario per pair of ages you choose.
