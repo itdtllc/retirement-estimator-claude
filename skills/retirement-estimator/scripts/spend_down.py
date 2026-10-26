@@ -15,6 +15,11 @@ value in the app and adjust (see reference/spend_down.md).
       --income 2600 --income-growth 2.5 --income-tax 10 --inflation 3 --withdrawal-tax 12
 
 Add --spending 4800 to check a given spending level instead of solving for it.
+
+Add --update-balances when the new balance goes into the app through Update Balances or an update
+file (not a new plan file). Update Balances keeps the account's compounding day: the statement
+balance at the start of that day is stored with that day's interest added, so the account grows in
+the first month too. Without the flag, the solved spending leaves money over at the end.
 """
 import argparse, json, math
 
@@ -30,7 +35,7 @@ def run(a, spending, detail=False):
     bal = a.balance
     rows = []
     for k in range(a.months):
-        if k > 0:
+        if k > 0 or a.update_balances:
             bal *= 1 + mrate
         year = k // 12
         bills = spending * (1 + a.inflation / 100) ** year
@@ -58,6 +63,9 @@ def main():
     p.add_argument("--withdrawal-tax", type=float, default=0, help="Tax on withdrawals %% (added on top)")
     p.add_argument("--target", type=float, default=0, help="Balance to leave at the end (default 0)")
     p.add_argument("--spending", type=float, default=None, help="Check this monthly spending instead of solving")
+    p.add_argument("--update-balances", action="store_true",
+                   help="The balance goes in through Update Balances or an update file on the account's "
+                        "compounding day (the app adds that day's interest), not a new plan file")
     a = p.parse_args()
     s = [int(x) for x in a.start.split("-")[:2]]
     e = [int(x) for x in a.end.split("-")[:2]]

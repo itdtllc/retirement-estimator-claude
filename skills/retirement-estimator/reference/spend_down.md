@@ -32,7 +32,8 @@ python3 scripts/spend_down.py --balance 380000 --return 7 --start 2026-11-01 --e
 
 `--start` is the month of the next withdrawal; `--end` is the target month; `--target 50000`
 leaves a reserve. It prints the monthly spending, this month's withdrawal (tax included), and the
-balance year by year. `--spending 4500` checks a given level instead.
+balance year by year. `--spending 4500` checks a given level instead. For a redo that goes into the
+app through Update Balances or an update file, add `--update-balances` (§7).
 
 If the plan has more than one account paying bills, or other transfers, use the script for a first
 guess, build the plan, and have them import it with **Compare**. Read the account's last value
@@ -103,21 +104,46 @@ Say these briefly, as facts to weigh, not advice:
 ## 7. Before every withdrawal: update and redo
 
 The right spending changes every time the balance changes. Before each withdrawal (monthly, or
-however often they withdraw):
+however often they withdraw), they give you the account's **new balance** (from the statement, at
+the start of the withdrawal date) and the date. Then the new balance goes into the app one of three
+ways. The first two use Update Balances (app 1.8.0 or later) and are the quickest. Ask which they'd
+like if they haven't said; the update file is the least typing for them.
 
-1. They give you the account's **new balance** and the date.
-2. Run the script again from that date with the new balance (and today's Social Security amount).
-   It returns the new monthly spending and this withdrawal. After the market falls, both go down;
-   after it rises, they go up.
-3. Give them an updated plan file with **every begin date moved to the new date** and the new
-   balance, a new file name, and import it with **Replace** (ask first) so the graph shows the new
-   path to the target.
+**An update file (you fill Update Balances in for them).** Run the script from the withdrawal date
+with the new balance and **`--update-balances`**:
 
-If they'd rather do it in the app: with app 1.8.0 or later, Money ▸ **Update Balances** does both
-changes in one pass. They pick the withdrawal date, enter the new balance, and change the spending
-expense's amount to the new monthly spending. Otherwise both changes are needed by hand: the
-account's balance **and** its begin date (and the scenario's begin date) set to today. A new balance
-with an old begin date makes the app grow it from the old date.
+```bash
+python3 scripts/spend_down.py --balance 362000 --update-balances --return 7 --start 2026-11-01 \
+  --end 2049-04-30 --income 2600 --income-growth 2.5 --income-tax 10 --inflation 3 --withdrawal-tax 12
+```
+
+Then write `Update <date>.financialplan` (SKILL.md, "an update file"; `reference/plan_format.md`)
+with `asOf` = the withdrawal date, the account's statement balance under `balances`, and the new
+monthly spending under `amounts` for the spending expense, using the names exactly as in the app.
+They open it, check the values, and tap **Review** ▸ **Apply**.
+
+**Update Balances by hand.** Same script run, with `--update-balances`. Give them the three values to
+enter: Money ▸ **Update Balances**, the date = the withdrawal date, the account's balance = the
+statement balance, and the spending expense's amount = the new monthly spending. Then **Review** ▸
+**Apply**.
+
+Why `--update-balances`: Update Balances keeps the account's compounding day. It stores the balance
+entered for the start of that day with that day's interest added (Review shows it, e.g. "Balance
+$364,046.80 … That is $362,000.00 at the start of 11/01/2026 with its interest"), so the account
+also grows in the first month. Solving without the flag leaves money at the end: about $9,300 at 95
+on a $362,000 IRA (checked in the app, 2026-10-26). Use the withdrawal date, which for a monthly
+plan is the account's compounding day; another date carries the balance to the next compounding
+date and the numbers won't match.
+
+**A new plan file.** Run the script without `--update-balances`. Give them an updated plan file with
+**every begin date moved to the withdrawal date** and the new balance, a new file name, and have
+them import it with **Replace** (ask first). This route also suits app versions before 1.8.0.
+
+Whichever route: after the market falls, the spending and the withdrawal both go down; after it
+rises, they go up. Tell them this month's withdrawal (the script's `firstWithdrawal`), and remind
+them to send the next balance before the next withdrawal. A new balance typed into the account's
+own form with its old begin date is wrong: the app grows it from the old date. Use one of the
+routes above.
 
 ## 8. Things to avoid
 

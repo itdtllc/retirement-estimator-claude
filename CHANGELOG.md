@@ -7,6 +7,13 @@ has its own version numbers, listed after it. The newest version is first in eac
 
 The newest version is first. The skill's version is separate from the app's version.
 
+### 1.5.2 (2026-10-26)
+
+- **Spend-downs stay on target with Update Balances.** When you redo a spend-down before a
+  withdrawal with Update Balances or an update file, Claude now counts the interest the app adds on
+  that day, so the account still ends at about $0 at your target age instead of leaving money unspent.
+  Claude can also give you the redo as an update file to open on your device.
+
 ### 1.5.1 (2026-10-26)
 
 - Steps for updating the skill now match Claude's current menus: under **Customize** ▸ **Skills**,

@@ -32,7 +32,7 @@ The files in this skill:
 - `examples/Retirement Plan Age 67.financialplan`: a complete, tested plan.
 - `CHANGELOG.md`: what changed in each version of this skill.
 
-This is **version 1.5.1** of the skill. If the person asks which version they have, or what's new,
+This is **version 1.5.2** of the skill. If the person asks which version they have, or what's new,
 tell them the version and the matching `CHANGELOG.md` entry. Newer versions are at
 itdtllc.com/data/RetirementEstimatorSkill.zip. To update in the Claude app or claude.ai: tap their name or
 initials ▸ **Settings**, then under **Customize** ▸ **Skills** ▸ **+ Add** ▸ **Upload skill**, choose
@@ -397,8 +397,8 @@ give you and change only the Social Security income's amount and `begin` date.
 
 **Spending an account down by a target age** ("How much can I spend so my IRA lasts until 90?"):
 follow `reference/spend_down.md`. It finds the spending with `scripts/spend_down.py`, covers the
-Monte Carlo odds and the risk of living past the target age, and explains why they redo it, with
-the new balance and date, before every withdrawal.
+Monte Carlo odds and the risk of living past the target age, and the redo before every withdrawal
+(`--update-balances` when it goes in through Update Balances or an update file, its §7).
 
 ### Changing a plan that's already in the app
 
