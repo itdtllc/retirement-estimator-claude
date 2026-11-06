@@ -11,5 +11,6 @@
   "termsOfServiceUrl": "https://github.com/itdtllc/retirement-estimator-claude/blob/main/LICENSE",
   "repository": "https://github.com/itdtllc/retirement-estimator-claude",
   "license": "SEE LICENSE IN LICENSE",
+  "icon": "./.claude-plugin/icon.png",
   "keywords": ["retirement", "financial-planning", "budget", "social-security", "rmd", "monte-carlo"]
 }
